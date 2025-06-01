@@ -1,85 +1,199 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronRight, Home, Users, Award, Phone, Mail, MapPin, Star, ChevronLeft, Facebook, Instagram, Twitter } from 'lucide-react';
-import Navbar from '../components/Navbar';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronRight, Home, Users, Award, MapPin, Star } from 'lucide-react';
+import { gsap } from 'gsap'; // Import GSAP (install via `npm install gsap` or use CDN in your project)
+import StackedCardTestimonials from '../components/StackedCardTestimonials';
+import BrandMarquee from '../components/BrandMarquee';
 
 const HomePage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
   const [counters, setCounters] = useState({ properties: 0, clients: 0, years: 0 });
+
+  // Refs for GSAP animations
+  const heroRef = useRef(null);
+  const featureRefs = useRef([]);
+  const counterRefs = useRef([]);
+  const testimonialRef = useRef(null);
+
+  // Hero background images
+  const heroImages = [
+    {
+      url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+      alt: 'Luxury Beachfront Villa',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Modern Oceanfront Estate',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Contemporary Coastal Home',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80',
+      alt: 'Luxury Waterfront Property',
+    },
+  ];
 
   // Testimonials data
   const testimonials = [
     {
-      name: "Michael Thompson",
-      role: "Luxury Home Buyer",
-      text: "Sand N Sea Realty exceeded every expectation. Their attention to detail and market knowledge is unparalleled.",
-      rating: 5
+      name: 'Michael Thompson',
+      role: 'Luxury Home Buyer',
+      text: 'Sand N Sea Realty exceeded every expectation. Their attention to detail and market knowledge is unparalleled.',
+      rating: 5,
     },
     {
-      name: "Sarah Williams",
-      role: "Oceanfront Property Seller",
-      text: "Professional, responsive, and results-driven. They sold our beachfront property above asking price in just 3 weeks.",
-      rating: 5
+      name: 'Sarah Williams',
+      role: 'Oceanfront Property Seller',
+      text: 'Professional, responsive, and results-driven. They sold our beachfront property above asking price in just 3 weeks.',
+      rating: 5,
     },
     {
-      name: "David Chen",
-      role: "Investment Client",
-      text: "Their expertise in luxury coastal properties helped us build an incredible investment portfolio.",
-      rating: 5
-    }
+      name: 'David Chen',
+      role: 'Investment Client',
+      text: 'Their expertise in luxury coastal properties helped us build an incredible investment portfolio.',
+      rating: 5,
+    },
   ];
 
-  // Counter animation
+  // Hero image carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // GSAP Hero Animations
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (hero) {
+      gsap.fromTo(
+        hero.querySelectorAll('h1, p, button'),
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power3.out',
+        }
+      );
+    }
+  }, []);
+
+  // GSAP Feature Cards Animation
+  useEffect(() => {
+    featureRefs.current.forEach((el, index) => {
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+    });
+  }, []);
+
+  // GSAP Counter Animation
   useEffect(() => {
     const targets = { properties: 847, clients: 1250, years: 15 };
-    const duration = 2000;
-    const increment = { 
-      properties: targets.properties / (duration / 50),
-      clients: targets.clients / (duration / 50),
-      years: targets.years / (duration / 50)
-    };
-
-    const timer = setInterval(() => {
-      setCounters(prev => ({
-        properties: Math.min(prev.properties + increment.properties, targets.properties),
-        clients: Math.min(prev.clients + increment.clients, targets.clients),
-        years: Math.min(prev.years + increment.years, targets.years)
-      }));
-    }, 50);
-
-    setTimeout(() => clearInterval(timer), duration);
-    return () => clearInterval(timer);
+    counterRefs.current.forEach((el, index) => {
+      if (el) {
+        const key = ['properties', 'clients', 'years'][index];
+        gsap.to(counters, {
+          [key]: targets[key],
+          duration: 2,
+          ease: 'power1.out',
+          onUpdate: () => {
+            setCounters((prev) => ({
+              ...prev,
+              [key]: Math.floor(gsap.getProperty(counters, key)),
+            }));
+          },
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
+    });
   }, []);
 
-  // Testimonial carousel
+  // GSAP Testimonial Animation
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+    const testimonial = testimonialRef.current;
+    if (testimonial) {
+      gsap.fromTo(
+        testimonial,
+        { opacity: 0, x: 20 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        }
+      );
+    }
+  }, [currentTestimonial]);
 
   return (
-    <>
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+      {/* Hero Section with Image Carousel */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/60 to-slate-800/40 z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80')`
-          }}
-        ></div>
-        <div className="relative z-20 text-center text-white max-w-4xl px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
+
+        {/* Image Carousel Container */}
+        <div className="absolute inset-0">
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-2000 ease-in-out ${
+                index === currentImage ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url('${image.url}')`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Image Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-30">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImage(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentImage ? 'bg-amber-500 scale-125' : 'bg-white/50 hover:bg-white/80'
+              }`}
+            />
+          ))}
+        </div>
+
+        <div ref={heroRef} className="relative z-20 text-center text-white max-w-4xl px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
             Where Luxury Meets the Coastline
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            Discover extraordinary oceanfront properties and luxury estates with Sand N Sea Realty. 
-            Your gateway to premier coastal living.
+            Discover extraordinary oceanfront properties and luxury estates with Sand N Sea Realty. Your gateway to premier
+            coastal living.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-amber-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+            <button className="bg-[#d2ab67] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
               Explore Our Listings
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -89,47 +203,100 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+{/* Featured Properties */}
+          <BrandMarquee/>
 
-      {/* Why Choose Sand N Sea */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
-              Why Choose Sand N Sea
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Featured Properties
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experience the difference with our premium real estate services and unmatched expertise in luxury coastal properties.
+              Discover our handpicked selection of luxury coastal properties and exclusive oceanfront estates.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <Home className="w-8 h-8" />,
-                title: "Luxury Expertise",
-                description: "Specializing in high-end oceanfront properties and exclusive coastal estates with unparalleled market knowledge."
+                image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                location: 'Malibu, California',
+                size: '4,500 sq ft',
+                price: '$8,500,000',
+                bedrooms: 5,
+                bathrooms: 6
               },
               {
-                icon: <Users className="w-8 h-8" />,
-                title: "Personal Service",
-                description: "Dedicated agents providing white-glove service tailored to your unique luxury real estate needs."
+                image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                location: 'The Hamptons, New York',
+                size: '6,200 sq ft',
+                price: '$12,750,000',
+                bedrooms: 6,
+                bathrooms: 7
               },
               {
-                icon: <Award className="w-8 h-8" />,
-                title: "Proven Results",
-                description: "Award-winning track record with over 847 luxury properties sold and countless satisfied clients."
+                image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                location: 'Miami Beach, Florida',
+                size: '3,800 sq ft',
+                price: '$6,200,000',
+                bedrooms: 4,
+                bathrooms: 5
               },
               {
-                icon: <MapPin className="w-8 h-8" />,
-                title: "Prime Locations",
-                description: "Exclusive access to the most sought-after coastal communities and waterfront properties."
-              }
-            ].map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center text-amber-600 mb-6 mx-auto">
-                  {feature.icon}
+                image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                location: 'Carmel-by-the-Sea, California',
+                size: '5,100 sq ft',
+                price: '$9,850,000',
+                bedrooms: 5,
+                bathrooms: 6
+              },
+              {
+                image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                location: 'Nantucket, Massachusetts',
+                size: '4,200 sq ft',
+                price: '$7,300,000',
+                bedrooms: 4,
+                bathrooms: 5
+              },
+              {
+                image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                location: 'Big Sur, California',
+                size: '3,600 sq ft',
+                price: '$5,900,000',
+                bedrooms: 3,
+                bathrooms: 4
+              },
+            ].map((property, index) => (
+              <div
+                key={index}
+                ref={(el) => (featureRefs.current[index] = el)}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={property.image} 
+                    alt={property.location}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                  <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    For Sale
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">{feature.title}</h3>
-                <p className="text-gray-600 text-center leading-relaxed">{feature.description}</p>
+                <div className="p-6">
+                  <div className="flex items-center text-gray-600 mb-2">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    <span className="text-sm">{property.location}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-800 mb-3">{property.price}</h3>
+                  <div className="flex justify-between text-gray-600 text-sm mb-4">
+                    <span>{property.bedrooms} Beds</span>
+                    <span>{property.bathrooms} Baths</span>
+                    <span>{property.size}</span>
+                  </div>
+                  <button className="w-full bg-slate-800 text-white py-3 rounded-lg hover:bg-slate-700 transition-colors duration-300 font-semibold">
+                    Talk to our advisor
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -140,27 +307,23 @@ const HomePage = () => {
       <section className="py-20 bg-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="p-8">
-              <div className="text-5xl md:text-6xl font-bold text-amber-400 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
-                {Math.floor(counters.properties)}+
+            {[
+              { value: Math.floor(counters.properties), label: 'Properties Sold', desc: 'Luxury homes and estates successfully sold to satisfied clients' },
+              { value: Math.floor(counters.clients), label: 'Clients Served', desc: 'Discriminating buyers and sellers who trust our expertise' },
+              { value: Math.floor(counters.years), label: 'Years of Excellence', desc: 'Decades of experience in luxury coastal real estate' },
+            ].map((counter, index) => (
+              <div
+                key={index}
+                ref={(el) => (counterRefs.current[index] = el)}
+                className="p-8"
+              >
+                <div className="text-5xl md:text-6xl font-bold text-[#d2ab67] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  {counter.value}+
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{counter.label}</h3>
+                <p className="text-gray-300">{counter.desc}</p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Properties Sold</h3>
-              <p className="text-gray-300">Luxury homes and estates successfully sold to satisfied clients</p>
-            </div>
-            <div className="p-8">
-              <div className="text-5xl md:text-6xl font-bold text-amber-400 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
-                {Math.floor(counters.clients)}+
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Clients Served</h3>
-              <p className="text-gray-300">Discriminating buyers and sellers who trust our expertise</p>
-            </div>
-            <div className="p-8">
-              <div className="text-5xl md:text-6xl font-bold text-amber-400 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
-                {Math.floor(counters.years)}+
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Years of Excellence</h3>
-              <p className="text-gray-300">Decades of experience in luxury coastal real estate</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -169,24 +332,30 @@ const HomePage = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
               What Our Clients Say
             </h2>
             <p className="text-xl text-gray-600">Hear from satisfied clients who experienced our exceptional service</p>
           </div>
           <div className="relative">
-            <div className="bg-gray-50 rounded-3xl p-8 md:p-12 text-center">
+            <div
+              ref={testimonialRef}
+              className="bg-gray-50 rounded-3xl p-8 md:p-12 text-center"
+            >
               <div className="flex justify-center mb-6">
                 {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-amber-400 fill-current" />
+                  <Star key={i} className="w-6 h-6 text-[#d2ab67] fill-current" />
                 ))}
               </div>
-              <blockquote className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed" style={{fontFamily: 'Playfair Display, serif'}}>
+              <blockquote
+                className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
                 "{testimonials[currentTestimonial].text}"
               </blockquote>
               <div>
                 <div className="text-lg font-semibold text-slate-800">{testimonials[currentTestimonial].name}</div>
-                <div className="text-amber-600">{testimonials[currentTestimonial].role}</div>
+                <div className="text-[#d2ab67]">{testimonials[currentTestimonial].role}</div>
               </div>
             </div>
             <div className="flex justify-center mt-8 space-x-2">
@@ -195,7 +364,7 @@ const HomePage = () => {
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentTestimonial ? 'bg-amber-600' : 'bg-gray-300'
+                    index === currentTestimonial ? 'bg-[#d2ab67]' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -203,8 +372,10 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      </div>
-        </>
+
+      {/* Placeholder for StackedCardTestimonials */}
+      {/* <StackedCardTestimonials /> */}
+    </div>
   );
 };
 

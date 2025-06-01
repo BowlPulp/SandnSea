@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Award, Users, Home, TrendingUp, MapPin, Star, Calendar, Target, Heart, Shield, User } from 'lucide-react';
+import BrandMarquee from '../components/BrandMarquee';
 
 const AboutUsPage = () => {
   const [counters, setCounters] = useState({ 
@@ -8,6 +9,9 @@ const AboutUsPage = () => {
     years: 0, 
     awards: 0 
   });
+
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const sectionRefs = useRef({});
 
   // Counter animation
   useEffect(() => {
@@ -33,265 +37,398 @@ const AboutUsPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const teamMembers = [
-    {
-      name: "Michael Rodriguez",
-      title: "Founder & CEO",
-      experience: "18 years",
-      specialty: "Luxury Coastal Properties",
-      description: "Michael founded Sand N Sea Realty with a vision to redefine luxury real estate along America's coastlines.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-    },
-    {
-      name: "Sarah Thompson",
-      title: "Senior Vice President",
-      experience: "14 years",
-      specialty: "Investment Properties",
-      description: "Sarah leads our investment division, helping clients build generational wealth through strategic property acquisitions.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c9c915f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-    },
-    {
-      name: "David Chen",
-      title: "Director of Sales",
-      experience: "12 years",
-      specialty: "Oceanfront Estates",
-      description: "David specializes in ultra-luxury oceanfront properties, with an unmatched knowledge of coastal real estate markets.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-    }
-  ];
+  // Intersection Observer for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections(prev => new Set([...prev, entry.target.id]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    Object.values(sectionRefs.current).forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Custom SVG Components
+  const VisionSVG = () => (
+    <svg viewBox="0 0 100 100" className="w-12 h-12">
+      <defs>
+        <linearGradient id="visionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#d2ab67', stopOpacity: 1}} />
+          <stop offset="100%" style={{stopColor: '#b8956a', stopOpacity: 1}} />
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="45" fill="none" stroke="url(#visionGrad)" strokeWidth="3" className="animate-pulse"/>
+      <circle cx="50" cy="50" r="30" fill="url(#visionGrad)" opacity="0.2"/>
+      <path d="M35 50 L45 60 L65 40" stroke="white" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="50" cy="50" r="6" fill="white"/>
+    </svg>
+  );
+
+  const MissionSVG = () => (
+    <svg viewBox="0 0 100 100" className="w-12 h-12">
+      <defs>
+        <linearGradient id="missionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#d2ab67', stopOpacity: 1}} />
+          <stop offset="100%" style={{stopColor: '#b8956a', stopOpacity: 1}} />
+        </linearGradient>
+      </defs>
+      <path d="M50 10 L70 30 L70 50 L50 70 L30 50 L30 30 Z" fill="url(#missionGrad)" className="animate-pulse"/>
+      <path d="M40 35 L45 45 L60 30" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round"/>
+      <path d="M40 50 L60 50" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+      <path d="M40 60 L55 60" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+    </svg>
+  );
+
+  const ValuesSVG = () => (
+    <svg viewBox="0 0 100 100" className="w-12 h-12">
+      <defs>
+        <linearGradient id="valuesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#d2ab67', stopOpacity: 1}} />
+          <stop offset="100%" style={{stopColor: '#b8956a', stopOpacity: 1}} />
+        </linearGradient>
+      </defs>
+      <polygon points="50,15 61,35 85,35 67,50 73,75 50,60 27,75 33,50 15,35 39,35" 
+               fill="url(#valuesGrad)" className="animate-pulse"/>
+      <circle cx="50" cy="45" r="8" fill="white" opacity="0.9"/>
+      <path d="M46 42 L49 47 L54 40" stroke="#d2ab67" strokeWidth="2" fill="none" strokeLinecap="round"/>
+    </svg>
+  );
+
+  const IntegritySVG = () => (
+    <svg viewBox="0 0 100 100" className="w-10 h-10">
+      <defs>
+        <linearGradient id="integrityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#d2ab67', stopOpacity: 1}} />
+          <stop offset="100%" style={{stopColor: '#b8956a', stopOpacity: 1}} />
+        </linearGradient>
+      </defs>
+      <rect x="20" y="30" width="60" height="50" rx="5" fill="url(#integrityGrad)"/>
+      <rect x="35" y="20" width="30" height="20" rx="3" fill="none" stroke="url(#integrityGrad)" strokeWidth="3"/>
+      <circle cx="40" cy="50" r="3" fill="white"/>
+      <rect x="50" y="45" width="20" height="8" rx="2" fill="white"/>
+    </svg>
+  );
+
+  const ClientCentricSVG = () => (
+    <svg viewBox="0 0 100 100" className="w-10 h-10">
+      <defs>
+        <linearGradient id="clientGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#d2ab67', stopOpacity: 1}} />
+          <stop offset="100%" style={{stopColor: '#b8956a', stopOpacity: 1}} />
+        </linearGradient>
+      </defs>
+      <path d="M50 20 C30 20 20 35 20 50 C20 65 30 80 50 80 C70 80 80 65 80 50 C80 35 70 20 50 20 Z" 
+            fill="url(#clientGrad)"/>
+      <circle cx="40" cy="40" r="4" fill="white"/>
+      <circle cx="60" cy="40" r="4" fill="white"/>
+      <path d="M35 60 Q50 70 65 60" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round"/>
+    </svg>
+  );
+
+  const ExcellenceSVG = () => (
+    <svg viewBox="0 0 100 100" className="w-10 h-10">
+      <defs>
+        <linearGradient id="excellenceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#d2ab67', stopOpacity: 1}} />
+          <stop offset="100%" style={{stopColor: '#b8956a', stopOpacity: 1}} />
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="30" fill="url(#excellenceGrad)"/>
+      <circle cx="50" cy="50" r="20" fill="none" stroke="white" strokeWidth="2"/>
+      <circle cx="50" cy="50" r="10" fill="white"/>
+      <path d="M50 30 L50 40" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+      <path d="M70 50 L60 50" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+      <path d="M50 70 L50 60" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+      <path d="M30 50 L40 50" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+    </svg>
+  );
+
+  const RelationshipsSVG = () => (
+    <svg viewBox="0 0 100 100" className="w-10 h-10">
+      <defs>
+        <linearGradient id="relationshipsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#d2ab67', stopOpacity: 1}} />
+          <stop offset="100%" style={{stopColor: '#b8956a', stopOpacity: 1}} />
+        </linearGradient>
+      </defs>
+      <circle cx="35" cy="40" r="15" fill="url(#relationshipsGrad)"/>
+      <circle cx="65" cy="40" r="15" fill="url(#relationshipsGrad)"/>
+      <path d="M35 55 Q50 65 65 55" stroke="url(#relationshipsGrad)" strokeWidth="8" fill="none" strokeLinecap="round"/>
+      <circle cx="30" cy="35" r="3" fill="white"/>
+      <circle cx="40" cy="35" r="3" fill="white"/>
+      <circle cx="60" cy="35" r="3" fill="white"/>
+      <circle cx="70" cy="35" r="3" fill="white"/>
+      <path d="M30 45 Q35 50 40 45" stroke="white" strokeWidth="2" fill="none"/>
+      <path d="M60 45 Q65 50 70 45" stroke="white" strokeWidth="2" fill="none"/>
+    </svg>
+  );
 
   const achievements = [
     {
       year: "2024",
-      title: "Top Luxury Real Estate Agency",
-      description: "Ranked #1 in luxury coastal property sales nationwide"
+      title: "Top Real Estate Agency",
+      description: "Ranked among the leading real estate agencies with exceptional client satisfaction"
     },
     {
       year: "2023",
-      title: "$2.8 Billion in Sales Volume",
-      description: "Record-breaking year with highest luxury property sales in company history"
+      title: "Market Leadership",
+      description: "Established strong market presence with comprehensive property solutions"
     },
     {
       year: "2022",
-      title: "Industry Excellence Award",
-      description: "Recognized by National Association of Realtors for outstanding service"
+      title: "Client Excellence Award",
+      description: "Recognized for outstanding customer service and personalized approach"
     },
     {
       year: "2021",
-      title: "Coastal Property Specialists",
-      description: "Became the leading agency for oceanfront properties on the West Coast"
+      title: "Trusted Partner Status",
+      description: "Became the go-to agency for residential and commercial property needs"
     }
   ];
 
   const values = [
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <IntegritySVG />,
       title: "Integrity",
-      description: "We conduct business with unwavering honesty and transparency, earning trust through every interaction."
+      description: "We conduct business with unwavering honesty and transparency, building trust through every interaction."
     },
     {
-      icon: <Heart className="w-8 h-8" />,
+      icon: <ClientCentricSVG />,
       title: "Client-Centric",
-      description: "Every decision we make is guided by what's best for our clients' long-term success and satisfaction."
+      description: "We prioritize your needs and work tirelessly to deliver results that exceed expectations."
     },
     {
-      icon: <Target className="w-8 h-8" />,
+      icon: <ExcellenceSVG />,
       title: "Excellence",
-      description: "We set the highest standards in luxury real estate, continuously exceeding expectations."
+      description: "We leverage our expertise and market insights to ensure our clients achieve their goals."
     },
     {
-      icon: <Users className="w-8 h-8" />,
-      title: "Partnership",
-      description: "We build lasting relationships, viewing each client as a valued partner in their real estate journey."
+      icon: <RelationshipsSVG />,
+      title: "Relationships",
+      description: "We believe real estate is about building lasting relationships, not just transactions."
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="pt-16 pb-16 bg-gradient-to-br from-slate-50 via-white to-amber-50">
+      {/* Vision, Mission, Values */}
+      <section className="py-20 bg-white" 
+               id="foundation" 
+               ref={el => sectionRefs.current.foundation = el}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
-              Our Story
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              For over 15 years, Sand N Sea Realty has been the trusted name in luxury coastal real estate, 
-              helping discerning clients discover their perfect oceanfront sanctuary.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid md:grid-cols-4 gap-8 mb-16">
-            {[
-              { label: "Properties Sold", value: Math.floor(counters.properties), suffix: "+" },
-              { label: "Happy Clients", value: Math.floor(counters.clients), suffix: "+" },
-              { label: "Years of Excellence", value: Math.floor(counters.years), suffix: "" },
-              { label: "Industry Awards", value: Math.floor(counters.awards), suffix: "" }
-            ].map((stat, index) => (
-              <div key={index} className="text-center bg-white rounded-2xl p-8 shadow-lg">
-                <div className="text-4xl font-bold text-amber-600 mb-2" style={{fontFamily: 'Playfair Display, serif'}}>
-                  {stat.value}{stat.suffix}
-                </div>
-                <div className="text-gray-600 font-semibold">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Company Origin & Background */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-slate-800 mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
-                Founded on a Vision of Excellence
-              </h2>
-              <div className="space-y-6 text-gray-700 leading-relaxed">
-                <p className="text-lg">
-                  Sand N Sea Realty was born from a simple yet powerful vision: to create an unparalleled 
-                  luxury real estate experience for clients seeking the finest coastal properties in America. 
-                  Founded in 2010 by Michael Rodriguez, our agency emerged from a deep passion for oceanfront 
-                  living and an unwavering commitment to exceptional service.
-                </p>
-                <p className="text-lg">
-                  What started as a boutique firm specializing in a select few coastal communities has grown 
-                  into the premier luxury real estate agency along the nation's most coveted coastlines. Our 
-                  success stems from our intimate knowledge of coastal markets, our extensive network of 
-                  high-net-worth clients, and our dedication to turning real estate dreams into reality.
-                </p>
-                <p className="text-lg">
-                  Today, Sand N Sea Realty represents the pinnacle of luxury coastal real estate, with a 
-                  portfolio that includes some of the most exclusive oceanfront estates, luxury condominiums, 
-                  and investment properties in prime coastal locations across the United States.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-gradient-to-br from-amber-100 to-slate-100 rounded-3xl p-8 shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Luxury coastal property" 
-                  className="rounded-2xl shadow-xl"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-amber-600 text-white p-6 rounded-2xl shadow-xl">
-                <div className="text-2xl font-bold mb-1">15+</div>
-                <div className="text-sm">Years of Excellence</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Values */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className={`text-center mb-16 transition-all duration-1000 ${
+            visibleSections.has('foundation') 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-4xl font-bold text-slate-800 mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
-              Our Mission & Values
+              Our Foundation
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We are driven by a mission to provide unparalleled luxury real estate services while upholding 
-              the values that define our character and guide our success.
-            </p>
-          </div>
-
-          {/* Mission Statement */}
-          <div className="bg-slate-800 text-white rounded-3xl p-12 mb-16 text-center">
-            <h3 className="text-3xl font-bold mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
-              Our Mission
-            </h3>
-            <p className="text-xl leading-relaxed max-w-4xl mx-auto">
-              "To be the definitive luxury coastal real estate agency, connecting discerning clients with 
-              exceptional oceanfront properties while delivering an unmatched level of personalized service, 
-              market expertise, and professional integrity that creates lasting relationships and transforms lives."
-            </p>
-          </div>
-
-          {/* Values */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg text-center hover:shadow-xl transition-all duration-300">
-                <div className="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center text-amber-600 mb-6 mx-auto">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership Team */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
-              Leadership Team
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Meet the experienced professionals who lead Sand N Sea Realty with passion, expertise, 
-              and an unwavering commitment to excellence.
+              Built on strong principles that guide every interaction and decision we make.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-slate-50 rounded-3xl p-8 text-center hover:shadow-xl transition-all duration-300">
-                <div className="relative mb-8">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover shadow-xl"
-                  />
-                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-amber-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    {member.experience}
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-2" style={{fontFamily: 'Playfair Display, serif'}}>
-                  {member.name}
-                </h3>
-                <div className="text-amber-600 font-semibold mb-2">{member.title}</div>
-                <div className="text-sm text-gray-600 mb-4 font-medium">Specialty: {member.specialty}</div>
-                <p className="text-gray-700 leading-relaxed">{member.description}</p>
+            {/* Vision */}
+            <div className={`text-center transition-all duration-1000 delay-200 ${
+              visibleSections.has('foundation') 
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-10 scale-95'
+            }`}>
+              <div className="bg-gradient-to-br from-amber-100 to-slate-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-xl">
+                <VisionSVG />
               </div>
-            ))}
+              <h3 className="text-2xl font-bold text-slate-800 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
+                Our Vision
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                To be the most trusted and innovative real estate agency, transforming the property market 
+                through exceptional service, integrity, and personalized solutions that exceed client expectations.
+              </p>
+            </div>
+
+            {/* Mission */}
+            <div className={`text-center transition-all duration-1000 delay-400 ${
+              visibleSections.has('foundation') 
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-10 scale-95'
+            }`}>
+              <div className="bg-gradient-to-br from-amber-100 to-slate-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-xl">
+                <MissionSVG />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
+                Our Mission
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                To provide comprehensive real estate services that simplify property transactions, deliver 
+                exceptional value, and build lasting relationships through expert guidance, market insights, 
+                and unwavering commitment to client success.
+              </p>
+            </div>
+
+            {/* Values */}
+            <div className={`text-center transition-all duration-1000 delay-600 ${
+              visibleSections.has('foundation') 
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-10 scale-95'
+            }`}>
+              <div className="bg-gradient-to-br from-amber-100 to-slate-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-xl">
+                <ValuesSVG />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
+                Our Values
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Integrity, transparency, and client-centricity form the cornerstone of our business. We believe 
+                in honest communication, ethical practices, and delivering personalized solutions that align 
+                with each client's unique goals and aspirations.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Achievements & Milestones */}
-      <section className="py-20 bg-gradient-to-br from-slate-800 to-slate-900 text-white">
+      {/* Our Approach & Values */}
+     <BrandMarquee/>
+
+      {/* Leadership Team */}
+      <section className="py-20 bg-slate-50" 
+               id="leadership" 
+               ref={el => sectionRefs.current.leadership = el}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
-              Achievements & Milestones
+          <div className={`text-center mb-16 transition-all duration-1000 ${
+            visibleSections.has('leadership') 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}>
+            <h2 className="text-4xl font-bold text-slate-800 mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
+              Meet Our Leadership Team
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our journey has been marked by significant achievements that reflect our commitment to 
-              excellence and leadership in luxury coastal real estate.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our experienced leadership team combines years of expertise with innovative approaches 
+              to deliver exceptional real estate solutions.
             </p>
           </div>
 
-          <div className="space-y-8">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="flex flex-col md:flex-row items-center gap-8 bg-slate-700/50 rounded-2xl p-8 backdrop-blur-sm">
-                <div className="bg-amber-600 text-white font-bold text-2xl px-6 py-4 rounded-xl min-w-[120px] text-center">
-                  {achievement.year}
+          <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+            {/* Founder */}
+            <div className={`bg-slate-50 rounded-3xl p-12 text-center hover:shadow-2xl transition-all duration-500 group ${
+              visibleSections.has('leadership') 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 -translate-x-10'
+            }`} style={{transitionDelay: '200ms'}}>
+              <div className="relative mb-8">
+                <img 
+                  src="Founder.jpeg" 
+                  alt="Danesh Singh"
+                  className="w-40 h-40 rounded-full mx-auto object-cover shadow-xl group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-[#d2ab67] text-white px-6 py-2 rounded-full text-sm font-semibold group-hover:scale-110 transition-transform duration-300">
+                  Founder & CEO
                 </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl font-bold mb-3" style={{fontFamily: 'Playfair Display, serif'}}>
-                    {achievement.title}
-                  </h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">{achievement.description}</p>
+              </div>
+              <h3 className="text-3xl font-bold text-slate-800 mb-4 group-hover:text-[#d2ab67] transition-colors duration-300" style={{fontFamily: 'Playfair Display, serif'}}>
+                Danesh Singh
+              </h3>
+              <div className="text-[#d2ab67] font-semibold mb-6 text-lg">Founder & Chief Executive Officer</div>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                With a passion for real estate and a commitment to excellence, Danesh Singh founded Sand & Sea Realty 
+                to provide unparalleled service in the real estate market. His vision of combining market expertise 
+                with personalized client care has made the company a trusted name in property solutions.
+              </p>
+            </div>
+
+            {/* Director */}
+            <div className={`bg-slate-50 rounded-3xl p-12 text-center hover:shadow-2xl transition-all duration-500 group ${
+              visibleSections.has('leadership') 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 translate-x-10'
+            }`} style={{transitionDelay: '400ms'}}>
+              <div className="relative mb-8">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                  alt="Rajesh Kumar"
+                  className="w-40 h-40 rounded-full mx-auto object-cover shadow-xl group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-6 py-2 rounded-full text-sm font-semibold group-hover:scale-110 transition-transform duration-300">
+                  Director
                 </div>
-                <div className="bg-amber-100 p-3 rounded-full">
-                  <Award className="w-8 h-8 text-amber-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-800 mb-4 group-hover:text-slate-800 transition-colors duration-300" style={{fontFamily: 'Playfair Display, serif'}}>
+                Rajesh Kumar
+              </h3>
+              <div className="text-slate-800 font-semibold mb-6 text-lg">Director & Operations Head</div>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Rajesh Kumar brings extensive experience in real estate operations and client relations. His strategic 
+                approach to business development and commitment to operational excellence ensures that Sand & Sea Realty 
+                maintains its high standards of service delivery and continues to grow in the competitive market.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-gradient-to-br from-slate-800 to-slate-900 text-white" 
+               id="why-choose" 
+               ref={el => sectionRefs.current['why-choose'] = el}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`text-center mb-16 transition-all duration-1000 ${
+            visibleSections.has('why-choose') 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}>
+            <h2 className="text-4xl font-bold mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
+              Why Choose Us?
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Our commitment to excellence and client satisfaction sets us apart in the real estate industry.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Award className="w-8 h-8 text-white" />,
+                title: "Experience & Expertise",
+                description: "With years of experience in the real estate industry, we have the knowledge and skills to handle even the most complex deals."
+              },
+              {
+                icon: <MapPin className="w-8 h-8 text-white" />,
+                title: "Local Market Knowledge",
+                description: "Our deep understanding of local market trends allows us to offer accurate and timely advice to our clients."
+              },
+              {
+                icon: <Heart className="w-8 h-8 text-white" />,
+                title: "Customer First",
+                description: "We prioritize your needs and work tirelessly to deliver results that exceed expectations in every transaction."
+              }
+            ].map((item, index) => (
+              <div key={index} className={`bg-slate-700/50 rounded-2xl p-8 backdrop-blur-sm text-center hover:bg-slate-700/70 transition-all duration-500 hover:scale-105 group ${
+                visibleSections.has('why-choose') 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
+              }`} style={{transitionDelay: `${200 + index * 200}ms`}}>
+                <div className="bg-[#d2ab67] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                  {item.icon}
                 </div>
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-[#d2ab67] transition-colors duration-300" style={{fontFamily: 'Playfair Display, serif'}}>
+                  {item.title}
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -299,36 +436,36 @@ const AboutUsPage = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-amber-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-amber-50" 
+               id="cta" 
+               ref={el => sectionRefs.current.cta = el}>
+        <div className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1000 ${
+          visibleSections.has('cta') 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-4xl font-bold text-slate-800 mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
-            Ready to Begin Your Journey?
+            Connect with Us
           </h2>
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Experience the Sand N Sea Realty difference. Let our team of luxury real estate experts 
-            guide you to your perfect coastal property.
+            Let's work together to make your real estate aspirations a reality. Connect with us to discuss 
+            how we can assist you in your next real estate venture.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-amber-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-700 transition-all transform hover:scale-105">
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-200 ${
+            visibleSections.has('cta') 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}>
+            <button className="bg-[#d2ab67] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-700 transition-all transform hover:scale-105 hover:shadow-lg">
               View Our Properties
             </button>
-            <button className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-800 hover:text-white transition-all">
+            <button className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-800 hover:text-white transition-all hover:scale-105 hover:shadow-lg">
               Contact Our Team
             </button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="text-2xl font-bold mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
-            Sand N Sea Realty
-          </div>
-          <p className="text-gray-400 mb-4">Where luxury meets the coastline</p>
-          <p className="text-gray-500 text-sm">© 2025 Sand N Sea Realty. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 };
