@@ -459,9 +459,9 @@ const AboutUsPage = () => {
                <a href="/properties" className="bg-[#d2ab67] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-700 transition-all transform hover:scale-105 hover:shadow-lg inline-block">
               View Our Properties
             </a>
-            <button className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-800 hover:text-white transition-all hover:scale-105 hover:shadow-lg">
+            <a href='/contact' className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-800 hover:text-white transition-all hover:scale-105 hover:shadow-lg">
               Contact Our Team
-            </button>
+            </a>
           </div>
         </div>
       </section>

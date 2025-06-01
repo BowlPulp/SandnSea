@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import BrandMarquee from '../components/BrandMarquee';
 
 const ClientsPage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -89,7 +90,7 @@ const ClientsPage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-cyan-200">Clients</span>
+              Our Clients
             </h1>
             <p className="text-xl text-yellow-100 max-w-3xl mx-auto leading-relaxed">
               Trusted by industry leaders and growing businesses alike. Discover why hundreds of clients 
@@ -205,34 +206,7 @@ const ClientsPage = () => {
       </div>
 
       {/* Client Logos Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Trusted by Industry Leaders
-            </h2>
-            <p className="text-xl text-gray-600">
-              Join hundreds of satisfied clients who have chosen us for their property needs
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {clients.map((client, index) => (
-              <div
-                key={index}
-                className="group bg-gradient-to-br from-slate-50 to-yellow-50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
-                  {client.logo}
-                </div>
-                <div className="text-sm font-semibold text-gray-700 group-hover:text-yellow-600 transition-colors duration-300">
-                  {client.name}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <BrandMarquee/>
 
       {/* CTA Section */}
       {/* <div className="py-20 bg-gradient-to-r from-yellow-600 via-yellow-800 to-yellow-600">
