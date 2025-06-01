@@ -302,12 +302,12 @@ const PropertiesPage = () => {
                 </div>
                 
                 <div className="space-y-3">
-                  <button 
+                  {/* <button 
                     onClick={() => viewProperty(property.id)}
                     className="w-full bg-gradient-to-r from-slate-800 to-slate-700 text-white py-3 rounded-lg hover:from-slate-700 hover:to-slate-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     View Details
-                  </button>
+                  </button> */}
                   <button className="w-full border-2 border-slate-800 text-slate-800 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300 font-semibold">
                     Talk to Advisor
                   </button>
