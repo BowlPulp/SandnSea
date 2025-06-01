@@ -19,7 +19,7 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           {/* Logo + Brand */}
           <div className="flex items-center space-x-3">
-            <img src="/Logo.png" alt="Logo" className="mt-4 h-16 w-16 object-contain" />
+            <img src="/Logo.png" alt="Logo" className="h-16 w-16 object-contain" />
             <h1 className="text-2xl font-bold text-[#d2ab67]">SandNSea Realty</h1>
           </div>
 
