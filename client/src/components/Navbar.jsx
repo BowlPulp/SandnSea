@@ -20,7 +20,7 @@ export default function Navbar() {
           {/* Logo + Brand */}
           <div className="flex items-center space-x-3">
             <img src="/Logo.png" alt="Logo" className="h-16 w-16 object-contain" />
-            <h1 className="text-2xl font-bold text-[#d2ab67]">SandNSea Realty</h1>
+            <h1 className="text-2xl font-extrabold text-[#d2ab67] font-cormant">SandNSea Realty</h1>
           </div>
 
           {/* Desktop Navigation */}
@@ -29,7 +29,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-[#d2ab67] hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-[#d2ab67] font-cormant hover:text-amber-500 px-3 py-2 rounded-md text-md font-medium transition-colors duration-200"
               >
                 {item.name}
               </Link>

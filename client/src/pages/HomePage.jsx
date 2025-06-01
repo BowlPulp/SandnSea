@@ -185,7 +185,7 @@ const HomePage = () => {
         </div>
 
         <div ref={heroRef} className="relative z-20 text-center text-white max-w-4xl px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <h1 className="text-5xl md:text-7xl mb-6 font-cormant font-extrabold">
             Where Luxury Meets the Coastline
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
