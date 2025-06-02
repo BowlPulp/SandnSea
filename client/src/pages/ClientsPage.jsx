@@ -83,22 +83,22 @@ const ClientsPage = () => {
 
   return (
         <>
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-yellow-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-50 to-yellow-50">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+      <div className="relative overflow-hidden bg-gradient-to-r from-10%  from-blue-950 via-[#d2ab67] to-blue-950 mt-16">
+        <div className="absolute inset-0 "></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
               Our Clients
             </h1>
-            <p className="text-xl text-yellow-100 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
               Trusted by industry leaders and growing businesses alike. Discover why hundreds of clients 
               choose us for their property needs.
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        {/* <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div> */}
       </div>
 
       {/* Stats Section */}
@@ -107,7 +107,7 @@ const ClientsPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className="bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-6 transform group-hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <div className="bg-gradient-to-br from-[#d2ab67] to-yellow-600 text-white rounded-2xl p-6 transform group-hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                   <div className="text-3xl md:text-4xl font-bold mb-2">{stat.number}</div>
                   <div className="text-yellow-100 font-medium">{stat.label}</div>
                 </div>

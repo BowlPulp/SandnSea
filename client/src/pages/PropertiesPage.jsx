@@ -5,7 +5,7 @@ const PropertiesPage = () => {
   const [favorites, setFavorites] = useState(new Set());
   const [viewedProperties, setViewedProperties] = useState(new Set());
   const featureRefs = useRef([]);
-
+ const [showPopup, setShowPopup] = useState(false);
   const properties = [
     {
       id: 1,
@@ -73,72 +73,6 @@ const PropertiesPage = () => {
       rating: 4.9,
       featured: false
     },
-    {
-      id: 7,
-      image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Newport, Rhode Island',
-      size: '7,800 sq ft',
-      price: '$15,200,000',
-      bedrooms: 7,
-      bathrooms: 8,
-      rating: 5.0,
-      featured: true
-    },
-    {
-      id: 8,
-      image: 'https://images.unsplash.com/photo-1600047509358-9dc75507daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Martha\'s Vineyard, Massachusetts',
-      size: '5,500 sq ft',
-      price: '$11,400,000',
-      bedrooms: 6,
-      bathrooms: 7,
-      rating: 4.8,
-      featured: false
-    },
-    {
-      id: 9,
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Laguna Beach, California',
-      size: '4,100 sq ft',
-      price: '$7,900,000',
-      bedrooms: 4,
-      bathrooms: 5,
-      rating: 4.7,
-      featured: false
-    },
-    {
-      id: 10,
-      image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Kiawah Island, South Carolina',
-      size: '6,800 sq ft',
-      price: '$13,500,000',
-      bedrooms: 6,
-      bathrooms: 8,
-      rating: 4.9,
-      featured: true
-    },
-    {
-      id: 11,
-      image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Block Island, Rhode Island',
-      size: '3,200 sq ft',
-      price: '$4,850,000',
-      bedrooms: 3,
-      bathrooms: 4,
-      rating: 4.5,
-      featured: false
-    },
-    {
-      id: 12,
-      image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Outer Banks, North Carolina',
-      size: '5,900 sq ft',
-      price: '$10,200,000',
-      bedrooms: 5,
-      bathrooms: 7,
-      rating: 4.8,
-      featured: false
-    }
   ];
 
   const toggleFavorite = (propertyId) => {
@@ -154,6 +88,10 @@ const PropertiesPage = () => {
   const viewProperty = (propertyId) => {
     setViewedProperties(prev => new Set([...prev, propertyId]));
   };
+
+  const handleContactForm =()=>{
+
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -308,7 +246,7 @@ const PropertiesPage = () => {
                   >
                     View Details
                   </button> */}
-                  <button className="w-full border-2 border-slate-800 text-slate-800 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300 font-semibold">
+                  <button className="w-full border-2 border-slate-800 text-slate-800 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300 font-semibold" onClick={handleContactForm}>
                     Talk to Advisor
                   </button>
                 </div>
