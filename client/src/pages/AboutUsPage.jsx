@@ -326,8 +326,8 @@ const AboutUsPage = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {/* Founder */}
+         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/* Founder - Danesh Singh */}
             <div className={`bg-white rounded-2xl p-8 shadow-md transition-all duration-500 ${
               visibleSections.has('leadership') 
                 ? 'opacity-100 translate-x-0' 
@@ -376,6 +376,55 @@ const AboutUsPage = () => {
               </div>
             </div>
 
+            {/* Founder - Sapna V Singh */}
+            <div className={`bg-white rounded-2xl p-8 shadow-md transition-all duration-500 ${
+              visibleSections.has('leadership') 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-10'
+            }`} style={{transitionDelay: '300ms'}}>
+              <div className="text-center mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1494790108755-2616b612b436?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                  alt="Sapna V Singh - Founder"
+                  className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
+                />
+                <div className="bg-[#d2ab67] text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
+                  Founder
+                </div>
+              </div>
+
+              <div className="text-center mb-6">
+                <h3 className="text-3xl font-bold text-slate-800 mb-3" style={{fontFamily: 'Playfair Display, serif'}}>
+                  Sapna V Singh
+                </h3>
+                <div className="text-[#d2ab67] font-semibold text-base mb-4 italic">
+                  "Creativity and strategic vision drive transformative success."
+                </div>
+              </div>
+
+              <div className="space-y-4 text-gray-700 leading-relaxed text-sm">
+                <p className="text-base font-medium text-slate-800">
+                  Bridging creativity and business acumen through entrepreneurial excellence and innovative vision.
+                </p>
+                
+                <p>
+                  With a Bachelor's in Sanskrit and Master's in Fashion Design from a leading Mumbai university, 
+                  Sapna brings unique creative perspective to real estate administration.
+                </p>
+                
+                <p>
+                  Her entrepreneurial journey began with founding <span className="font-semibold text-slate-800">VIMEE</span>, a fashion brand known for elegance 
+                  and innovation, before transitioning into real estate where she applies sharp business insight 
+                  to navigate dynamic market conditions.
+                </p>
+                
+                <p className="font-medium text-slate-800 border-l-3 border-[#d2ab67] pl-3 italic text-sm">
+                  "With a unique blend of artistic vision and strategic thinking, I continue making my mark 
+                  across industries—bringing creative solutions and business excellence to every venture."
+                </p>
+              </div>
+            </div>
+
             {/* Director */}
             <div className={`bg-white rounded-2xl p-8 shadow-md transition-all duration-500 ${
               visibleSections.has('leadership') 
@@ -384,12 +433,12 @@ const AboutUsPage = () => {
             }`} style={{transitionDelay: '400ms'}}>
               <div className="text-center mb-6">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                  alt="Subhashchandra Singh - Co-Founder & Director"
+                  src="" 
+                  alt="Subhashchandra Singh - Director"
                   className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
                 <div className="bg-slate-800 text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
-                  Co-Founder & Director
+                  Director
                 </div>
               </div>
 
@@ -426,7 +475,7 @@ const AboutUsPage = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
       </section>
 
       {/* Why Choose Us */}
