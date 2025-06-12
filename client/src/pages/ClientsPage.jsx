@@ -7,38 +7,47 @@ const ClientsPage = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      company: "Johnson Holdings",
-      role: "CEO",
+      name: "Virag Mishra",
+      company: "Singer",
+      role: "Self",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-      text: "Working with this team transformed our property portfolio. Their expertise in commercial real estate helped us secure prime locations that exceeded our expectations.",
+      text: "Found my dream home with zero stress. You understood exactly what I needed—truly grateful!",
       rating: 5,
       property: "Downtown Commercial Complex"
     },
     {
-      name: "Michael Chen",
-      company: "Tech Innovations Inc",
-      role: "Founder",
+      name: "Devesh Mathur",
+      company: "HSBC Bangladesh",
+      role: "COO",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      text: "The attention to detail and market knowledge they provided was invaluable. We found the perfect headquarters space that aligned perfectly with our company culture.",
+      text: "Professional, reliable, and efficient. The whole process was handled with excellence.",
       rating: 5,
       property: "Modern Office Space"
     },
     {
-      name: "Emma Rodriguez",
-      company: "Rodriguez Family Trust",
-      role: "Trustee",
+      name: "Akhil Kedia",
+      company: "JP Morgan",
+      role: "Executive Director",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-      text: "Their residential property expertise helped us build a diverse investment portfolio. The ROI has been exceptional, and their ongoing support is outstanding.",
+      text: "Great experience—your insights and approach made everything quick and smooth. ",
       rating: 5,
       property: "Luxury Residential Portfolio"
     },
     {
-      name: "David Thompson",
-      company: "Thompson Retail Group",
-      role: "Director",
+      name: "Dr. Roopesh Pandey",
+      company: "Jaslok Hospital",
+      role: "Cardiologist",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      text: "From initial consultation to final handover, the service was seamless. They understood our retail space requirements and delivered beyond expectations.",
+      text: "Appreciated the hassle-free process. You made it easy despite my busy schedule.",
+      rating: 5,
+      property: "Retail Shopping Center"
+    },
+      {
+      name: "Sujata Kunder",
+      company: "Custom Officer",
+      role: "-",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      text: "Loved the personal attention and honesty. Found exactly what I was looking for!",
       rating: 5,
       property: "Retail Shopping Center"
     }

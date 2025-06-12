@@ -253,8 +253,7 @@ const AboutUsPage = () => {
                 Our Vision
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                To be the most trusted and innovative real estate agency, transforming the property market 
-                through exceptional service, integrity, and personalized solutions that exceed client expectations.
+                At Sand and Sea Ventures LLP , “Realty to Reality” is our creed. We boldly transform dreams into enduring legacies—building spaces where communities grow, futures are forged, and trust stands unshaken. We don’t just follow the market; we shape it with vision, integrity, and purpose.
               </p>
             </div>
 
@@ -271,9 +270,11 @@ const AboutUsPage = () => {
                 Our Mission
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                To provide comprehensive real estate services that simplify property transactions, deliver 
-                exceptional value, and build lasting relationships through expert guidance, market insights, 
-                and unwavering commitment to client success.
+                At Sand & Sea, our mission is to turn real estate aspirations into lasting realities. We deliver
+                personalized, strategic, and innovative property solutions that reflect each client’s unique
+                vision—whether by the coast, in the city, or anywhere in between. With deep industry
+                expertise and a commitment to integrity, we aim to simplify and elevate every step of the real
+                estate journey.
               </p>
             </div>
 
@@ -303,77 +304,126 @@ const AboutUsPage = () => {
      <BrandMarquee/>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-slate-50" 
+ <section className="py-20 bg-slate-50" 
                id="leadership" 
                ref={el => sectionRefs.current.leadership = el}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 transition-all duration-1000 ${
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className={`text-center mb-16 transition-all duration-700 ${
             visibleSections.has('leadership') 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-4xl font-bold text-slate-800 mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
+            <div className="inline-flex items-center bg-[#d2ab67]/10 px-4 py-2 rounded-full mb-4">
+              <span className="text-[#d2ab67] font-semibold text-sm tracking-wider uppercase">Leadership</span>
+            </div>
+            <h2 className="text-4xl font-bold text-slate-800 mb-4 leading-tight" style={{fontFamily: 'Playfair Display, serif'}}>
               Meet Our Leadership Team
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our experienced leadership team combines years of expertise with innovative approaches 
-              to deliver exceptional real estate solutions.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Our experienced leadership team brings together decades of expertise across real estate, 
+              finance, and business development to deliver exceptional solutions for our clients.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
             {/* Founder */}
-            <div className={`bg-slate-50 rounded-3xl p-12 text-center hover:shadow-2xl transition-all duration-500 group ${
+            <div className={`bg-white rounded-2xl p-8 shadow-md transition-all duration-500 ${
               visibleSections.has('leadership') 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 -translate-x-10'
             }`} style={{transitionDelay: '200ms'}}>
-              <div className="relative mb-8">
+              <div className="text-center mb-6">
                 <img 
                   src="Founder.jpeg" 
-                  alt="Danesh Singh"
-                  className="w-40 h-40 rounded-full mx-auto object-cover shadow-xl group-hover:scale-110 transition-transform duration-500"
+                  alt="Danesh Singh - Founder & CEO"
+                  className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-[#d2ab67] text-white px-6 py-2 rounded-full text-sm font-semibold group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-[#d2ab67] text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
                   Founder & CEO
                 </div>
               </div>
-              <h3 className="text-3xl font-bold text-slate-800 mb-4 group-hover:text-[#d2ab67] transition-colors duration-300" style={{fontFamily: 'Playfair Display, serif'}}>
-                Danesh Singh
-              </h3>
-              <div className="text-[#d2ab67] font-semibold mb-6 text-lg">Founder & Chief Executive Officer</div>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                With a passion for real estate and a commitment to excellence, Danesh Singh founded Sand & Sea Realty 
-                to provide unparalleled service in the real estate market. His vision of combining market expertise 
-                with personalized client care has made the company a trusted name in property solutions.
-              </p>
+
+              <div className="text-center mb-6">
+                <h3 className="text-3xl font-bold text-slate-800 mb-3" style={{fontFamily: 'Playfair Display, serif'}}>
+                  Danesh Singh
+                </h3>
+                <div className="text-[#d2ab67] font-semibold text-base mb-4 italic">
+                  "The best time to plant a tree was 20 years ago. The second-best time is now."
+                </div>
+              </div>
+
+              <div className="space-y-4 text-gray-700 leading-relaxed text-sm">
+                <p className="text-base font-medium text-slate-800">
+                  Transforming vision into reality through strategic excellence and unwavering integrity.
+                </p>
+                
+                <p>
+                  With a Master's in Marketing and Sales plus published research from Business School, 
+                  Danesh brings academic rigor to over a decade of hands-on real estate expertise.
+                </p>
+                
+                <p>
+                  His distinguished career spans industry leaders including <span className="font-semibold text-slate-800">Bennett & Coleman, L&T Realty, Adani Realty, Anarock, and Palladian Partners</span>—mastering 
+                  every facet from sales and marketing to business development and digital innovation.
+                </p>
+                
+                <p className="font-medium text-slate-800 border-l-3 border-[#d2ab67] pl-3 italic text-sm">
+                  "Now launching this venture, I'm committed to delivering strategic, personalized, 
+                  and seamless real estate solutions. From market insights to deal structuring, 
+                  every approach is built on integrity, innovation, and excellence."
+                </p>
+              </div>
             </div>
 
             {/* Director */}
-            <div className={`bg-slate-50 rounded-3xl p-12 text-center hover:shadow-2xl transition-all duration-500 group ${
+            <div className={`bg-white rounded-2xl p-8 shadow-md transition-all duration-500 ${
               visibleSections.has('leadership') 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 translate-x-10'
             }`} style={{transitionDelay: '400ms'}}>
-              <div className="relative mb-8">
+              <div className="text-center mb-6">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                  alt="Rajesh Kumar"
-                  className="w-40 h-40 rounded-full mx-auto object-cover shadow-xl group-hover:scale-110 transition-transform duration-500"
+                  alt="Subhashchandra Singh - Co-Founder & Director"
+                  className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-6 py-2 rounded-full text-sm font-semibold group-hover:scale-110 transition-transform duration-300">
-                  Director
+                <div className="bg-slate-800 text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
+                  Co-Founder & Director
                 </div>
               </div>
-              <h3 className="text-3xl font-bold text-slate-800 mb-4 group-hover:text-slate-800 transition-colors duration-300" style={{fontFamily: 'Playfair Display, serif'}}>
-                Rajesh Kumar
-              </h3>
-              <div className="text-slate-800 font-semibold mb-6 text-lg">Director & Operations Head</div>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                Rajesh Kumar brings extensive experience in real estate operations and client relations. His strategic 
-                approach to business development and commitment to operational excellence ensures that Sand & Sea Realty 
-                maintains its high standards of service delivery and continues to grow in the competitive market.
-              </p>
+
+              <div className="text-center mb-6">
+                <h3 className="text-3xl font-bold text-slate-800 mb-3" style={{fontFamily: 'Playfair Display, serif'}}>
+                  Subhashchandra Singh
+                </h3>
+                <div className="text-slate-800 font-semibold text-base mb-4 italic">
+                  "Success is born from dharma—acting with integrity and purpose."
+                </div>
+              </div>
+
+              <div className="space-y-4 text-gray-700 leading-relaxed text-sm">
+                <p className="text-base font-medium text-slate-800">
+                  Guiding with wisdom earned through 35 years of cross-industry leadership excellence.
+                </p>
+                
+                <p>
+                  At Sand and Sea Ventures LLP, ethical principles guide every transaction, ensuring 
+                  your trust is honored through dharma-driven business practices.
+                </p>
+                
+                <p>
+                  His remarkable journey spans <span className="font-semibold text-slate-800">Pharmaceuticals, Banking, and Specialty Chemicals</span> with prestigious 
+                  organizations including <span className="font-semibold text-slate-800">TTK, Pfizer, Bio-Med, Central Bank of India, and Bank of Baroda</span>—consistently 
+                  driving strategic growth and business excellence.
+                </p>
+                
+                <p className="font-medium text-slate-800 border-l-3 border-slate-800 pl-3 italic text-sm">
+                  "In this exciting post-retirement chapter, my mission is mentoring dynamic professionals—sharing 
+                  key insights, foundational principles, and hands-on expertise. With deep industry knowledge 
+                  and strategic vision, I'm committed to guiding our firm toward unprecedented success."
+                </p>
+              </div>
             </div>
           </div>
         </div>
