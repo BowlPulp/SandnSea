@@ -219,52 +219,52 @@ const HomePage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                location: 'Malibu, California',
-                size: '4,500 sq ft',
-                price: '$8,500,000',
-                bedrooms: 5,
-                bathrooms: 6
+                image: 'properties/Prestige.png',
+                location: 'Prestige City - Mulund West',
+                size: '2,3,4 BHK',
+                price: '₹3,000,000+',
+                bedrooms: '2+',
+                bathrooms: '2+'
               },
               {
-                image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                location: 'The Hamptons, New York',
-                size: '6,200 sq ft',
-                price: '$12,750,000',
-                bedrooms: 6,
-                bathrooms: 7
+                image: 'properties/Piramal.png',
+                location: 'Piramal Revanta - Mulund West',
+                size: '2,3 BHK',
+                price: '₹3,280,000+',
+                bedrooms: '2+',
+                bathrooms: '2+'
               },
               {
-                image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                location: 'Miami Beach, Florida',
-                size: '3,800 sq ft',
-                price: '$6,200,000',
-                bedrooms: 4,
-                bathrooms: 5
+                image: 'properties/Neelam.png',
+                location: 'Neelam Senroof - Mulund East',
+                size: '2,3 BHK',
+                price: '₹2,50,000+',
+               bedrooms: '2+',
+                bathrooms: '2+'
               },
               {
-                image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                location: 'Carmel-by-the-Sea, California',
-                size: '5,100 sq ft',
-                price: '$9,850,000',
-                bedrooms: 5,
-                bathrooms: 6
+                image: 'properties/Raheja.png',
+                location: 'Raheja Antares',
+                size: '3,4 BHK',
+                price: '₹3,850,000+',
+               bedrooms: '3+',
+                bathrooms: '3+'
               },
               {
-                image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                location: 'Nantucket, Massachusetts',
-                size: '4,200 sq ft',
-                price: '$7,300,000',
-                bedrooms: 4,
-                bathrooms: 5
+                image: 'properties/L&T.png',
+                location: 'L&t Elixr 2 - Powai',
+                size: '2,3 BHK',
+                price: '₹3,280,000+',
+                bedrooms: '2+',
+                bathrooms: '2+'
               },
               {
-                image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                location: 'Big Sur, California',
-                size: '3,600 sq ft',
-                price: '$5,900,000',
-                bedrooms: 3,
-                bathrooms: 4
+                image: 'properties/Lodha.png',
+                location: 'Lodha Divino - Matunga',
+                size: '3,4 BHK',
+                price: '₹6,700,000+',
+                bedrooms: '3+',
+                bathrooms: '3+'
               },
             ].map((property, index) => (
               <div

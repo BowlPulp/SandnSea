@@ -384,7 +384,7 @@ const AboutUsPage = () => {
             }`} style={{transitionDelay: '300ms'}}>
               <div className="text-center mb-6">
                 <img 
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b436?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                  src="CoFounder.png" 
                   alt="Sapna V Singh - Founder"
                   className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
@@ -433,7 +433,7 @@ const AboutUsPage = () => {
             }`} style={{transitionDelay: '400ms'}}>
               <div className="text-center mb-6">
                 <img 
-                  src="" 
+                  src="Director.jpg" 
                   alt="Subhashchandra Singh - Director"
                   className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
