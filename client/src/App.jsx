@@ -7,6 +7,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import AboutUsPage from './pages/AboutUsPage'
 import ClientsPage from './pages/ClientsPage'
 import PropertiesPage from './pages/PropertiesPage'
+import ContactFormPopup from './components/ContactFormPopup'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/aboutus' element={<AboutUsPage/>}/>
           <Route path='/clients' element={<ClientsPage/>}/>
            <Route path='/properties' element={<PropertiesPage/>}/>
+           <Route path='/contactform' element={<ContactFormPopup/>}/>
        <Route path='*' element={<NotFoundPage/>}/>
       </Route>
 

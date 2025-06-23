@@ -3,6 +3,7 @@ import { ChevronRight, Home, Users, Award, MapPin, Star } from 'lucide-react';
 import { gsap } from 'gsap'; // Import GSAP (install via `npm install gsap` or use CDN in your project)
 import StackedCardTestimonials from '../components/StackedCardTestimonials';
 import BrandMarquee from '../components/BrandMarquee';
+import {Link} from 'react-router-dom';
 
 const HomePage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -14,7 +15,7 @@ const HomePage = () => {
   const featureRefs = useRef([]);
   const counterRefs = useRef([]);
   const testimonialRef = useRef(null);
-
+  
   // Hero background images
   const heroImages = [
     {
@@ -61,7 +62,7 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 10000);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
@@ -193,10 +194,10 @@ const HomePage = () => {
             coastal living.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[#d2ab67] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+            <Link to="/properties" className="bg-[#d2ab67] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
               Explore Our Listings
               <ChevronRight className="w-5 h-5" />
-            </button>
+            </Link>
             <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-slate-800 transition-all">
               Contact an Agent
             </button>

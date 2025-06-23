@@ -1,6 +1,6 @@
 import {Home, Users, Award, Phone, Mail, MapPin, Star, Facebook, Instagram, Twitter } from 'lucide-react';
 import React from 'react'
-
+import {Link} from 'react-router-dom';
 const Footer = () => {
   return (
     <>
@@ -16,13 +16,13 @@ const Footer = () => {
                     Your premier destination for luxury coastal real estate. Specializing in oceanfront properties and exclusive estates along mumbai's most beautiful places.
                   </p>
                   <div className="flex space-x-4">
-                    <a href="#" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
+                    <a href="facebook.com" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
                       <Facebook className="w-5 h-5" />
                     </a>
-                    <a href="#" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
+                    <a href="instagram.com" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
                       <Instagram className="w-5 h-5" />
                     </a>
-                    <a href="#" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
+                    <a href="twitter.com" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
                       <Twitter className="w-5 h-5" />
                     </a>
                   </div>
@@ -30,10 +30,10 @@ const Footer = () => {
                 <div>
                   <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
                   <ul className="space-y-2">
-                    <li><a href="/aboutus" className="text-gray-300 hover:text-[#d2ab67] transition-colors">About Us</a></li>
-                    <li><a href="/properties" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Properties</a></li>
-                    <li><a href="/clients" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Our Clients</a></li>
-                    <li><a href="/contact" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Contact Us</a></li>
+                    <li><Link to="/aboutus" className="text-gray-300 hover:text-[#d2ab67] transition-colors">About Us</Link></li>
+                    <li><Link to="/properties" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Properties</Link></li>
+                    <li><Link to="/clients" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Our Clients</Link></li>
+                    <li><Link to="/contact" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Contact Us</Link></li>
                   </ul>
                 </div>
                 <div>

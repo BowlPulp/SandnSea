@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Award, Users, Home, TrendingUp, MapPin, Star, Calendar, Target, Heart, Shield, User } from 'lucide-react';
 import BrandMarquee from '../components/BrandMarquee';
+import {Link} from 'react-router-dom';
 
 const AboutUsPage = () => {
   const [counters, setCounters] = useState({ 
@@ -555,9 +556,9 @@ const AboutUsPage = () => {
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-10'
           }`}>
-               <a href="/properties" className="bg-[#d2ab67] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-700 transition-all transform hover:scale-105 hover:shadow-lg inline-block">
+               <Link to="/properties" className="bg-[#d2ab67] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-700 transition-all transform hover:scale-105 hover:shadow-lg inline-block">
               View Our Properties
-            </a>
+            </Link>
             <a href='/contact' className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-800 hover:text-white transition-all hover:scale-105 hover:shadow-lg">
               Contact Our Team
             </a>
