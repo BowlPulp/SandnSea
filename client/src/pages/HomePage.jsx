@@ -198,7 +198,7 @@ const HomePage = () => {
               Explore Our Listings
               <ChevronRight className="w-5 h-5" />
             </Link>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-slate-800 transition-all">
+            <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-slate-800">
               Contact an Agent
             </button>
           </div>
