@@ -1,4 +1,4 @@
-import {Home, Users, Award, Phone, Mail, MapPin, Star, Facebook, Instagram, Twitter } from 'lucide-react';
+import {Home, Users, Award, Phone, Mail, MapPin, Star, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 import React from 'react'
 import {Link} from 'react-router-dom';
 const Footer = () => {
@@ -16,14 +16,14 @@ const Footer = () => {
                     Your premier destination for luxury coastal real estate. Specializing in oceanfront properties and exclusive estates along mumbai's most beautiful places.
                   </p>
                   <div className="flex space-x-4">
-                    <a href="facebook.com" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
+                    <a href="https://www.facebook.com/profile.php?id=61573525333897" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
                       <Facebook className="w-5 h-5" />
                     </a>
-                    <a href="instagram.com" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
+                    <a href="https://www.instagram.com/sandnsea.realty/" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
                       <Instagram className="w-5 h-5" />
                     </a>
-                    <a href="twitter.com" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors">
-                      <Twitter className="w-5 h-5" />
+                    <a href="https://www.linkedin.com/company/sand-sea-realty-venturellp/?originalSubdomain=in" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
+                      <Linkedin className="w-5 h-5" />
                     </a>
                   </div>
                 </div>

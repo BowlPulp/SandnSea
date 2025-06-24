@@ -250,67 +250,67 @@ const PropertiesPage = () => {
   const properties = [
     {
       id: 1,
-      image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Malibu, California',
-      size: '4,500 sq ft',
-      price: '$8,500,000',
-      bedrooms: 5,
-      bathrooms: 6,
-      rating: 4.9,
+      image: 'aboutusproperties/runwalavenue.jpg',
+      location: 'Runwal Avenue - Kanjurmang EAST',
+      size: '1,2,3 BHK',
+      price: '₹14,000,000',
+      bedrooms: '2+',
+      bathrooms: '2+',
+      rating: 4.5,
       featured: true
     },
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'The Hamptons, New York',
-      size: '6,200 sq ft',
-      price: '$12,750,000',
-      bedrooms: 6,
-      bathrooms: 7,
+      image: 'aboutusproperties/LodhaDivino.jpg',
+      location: 'Lodha Divino - Matunga',
+      size: '3,4 BHK',
+      price: '₹67,000,000',
+      bedrooms: '3+',
+      bathrooms: '3+',
       rating: 5.0,
       featured: true
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Miami Beach, Florida',
-      size: '3,800 sq ft',
-      price: '$6,200,000',
-      bedrooms: 4,
-      bathrooms: 5,
-      rating: 4.8,
+      image: 'aboutusproperties/LodhaAcenza.jpg',
+      location: 'Lodha Ascenza - Andheri East ',
+      size: '3,4 BHK',
+      price: '₹80,000,000',
+      bedrooms: '3+',
+      bathrooms: '4+',
+      rating: 5.0,
       featured: false
     },
     {
       id: 4,
-      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Carmel-by-the-Sea, California',
-      size: '5,100 sq ft',
-      price: '$9,850,000',
-      bedrooms: 5,
-      bathrooms: 6,
-      rating: 4.7,
+      image: 'aboutusproperties/GodrejReserve.webp',
+      location: 'Godrej Reserve - Kandivali East',
+      size: '2,3,4 BHK',
+      price: '₹40,000,000',
+      bedrooms: '2+',
+      bathrooms: '3+',
+      rating: 4.9,
       featured: true
     },
     {
       id: 5,
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Nantucket, Massachusetts',
-      size: '4,200 sq ft',
-      price: '$7,300,000',
-      bedrooms: 4,
-      bathrooms: 5,
-      rating: 4.6,
+      image: 'aboutusproperties/LodhaAltus.jpg',
+      location: 'Lodha Altus - Borivali West',
+      size: '3,4 BHK',
+      price: '₹40,000,000',
+      bedrooms: '3+',
+      bathrooms: '4+',
+      rating: 4.9,
       featured: false
     },
     {
       id: 6,
-      image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      location: 'Big Sur, California',
-      size: '3,600 sq ft',
-      price: '$5,900,000',
-      bedrooms: 3,
-      bathrooms: 4,
+      image: 'aboutusproperties/DLH.webp',
+      location: 'DLH Signature - Bandra West',
+      size: '3,4 BHK',
+      price: '₹40,000,000',
+      bedrooms: '3+',
+      bathrooms: '3+',
       rating: 4.9,
       featured: false
     },
@@ -397,9 +397,9 @@ const PropertiesPage = () => {
             <button className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-8 py-4 rounded-lg hover:from-slate-700 hover:to-slate-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
               Schedule Private Tour
             </button>
-            <button className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300 font-semibold">
+            {/* <button className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300 font-semibold">
               View Investment Guide
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -420,7 +420,7 @@ const PropertiesPage = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 
-                {/* Badges */}
+                Badges
                 <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
                   {property.featured && (
                     <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
@@ -428,7 +428,7 @@ const PropertiesPage = () => {
                     </div>
                   )}
                   <div className="flex gap-2 ml-auto">
-                    <button
+                    {/* <button
                       onClick={() => toggleFavorite(property.id)}
                       className={`p-2 rounded-full backdrop-blur-sm transition-all duration-300 ${
                         favorites.has(property.id) 
@@ -437,13 +437,13 @@ const PropertiesPage = () => {
                       }`}
                     >
                       <Heart className={`w-4 h-4 ${favorites.has(property.id) ? 'fill-current' : ''}`} />
-                    </button>
-                    <button
+                    </button> */}
+                    {/* <button
                       onClick={() => viewProperty(property.id)}
                       className="p-2 rounded-full bg-white/80 backdrop-blur-sm text-gray-600 hover:bg-white hover:text-blue-600 transition-all duration-300"
                     >
                       <Eye className="w-4 h-4" />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
 
