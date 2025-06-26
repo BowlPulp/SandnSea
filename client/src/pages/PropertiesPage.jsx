@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MapPin, Bed, Bath, Square, Heart, Eye, Star, X, Send, User, Mail, Phone, MessageSquare } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 // Modified ContactFormPopup to accept external props
 const ContactFormPopup = ({ isOpen, onClose, propertyId }) => {
   const [formData, setFormData] = useState({
@@ -394,9 +394,9 @@ const PropertiesPage = () => {
             and world-class amenities in the most coveted locations across America's coastlines.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-8 py-4 rounded-lg hover:from-slate-700 hover:to-slate-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            <Link to='/contact' className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-8 py-4 rounded-lg hover:from-slate-700 hover:to-slate-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
               Schedule Private Tour
-            </button>
+            </Link>
             {/* <button className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300 font-semibold">
               View Investment Guide
             </button> */}

@@ -19,20 +19,20 @@ const HomePage = () => {
   // Hero background images
   const heroImages = [
     {
-      url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
-      alt: 'Luxury Beachfront Villa',
+      url: 'homepageproperties/Morning.webp',
+      alt: 'Morning View',
     },
     {
-      url: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Modern Oceanfront Estate',
+      url: 'homepageproperties/Sunrise.jpg',
+      alt: 'Sunrise View',
     },
     {
-      url: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Contemporary Coastal Home',
+      url: 'homepageproperties/Sunset.jpg',
+      alt: 'Sunset View',
     },
     {
-      url: 'https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80',
-      alt: 'Luxury Waterfront Property',
+      url: 'homepageproperties/Night.jpg',
+      alt: 'Night View',
     },
   ];
 
