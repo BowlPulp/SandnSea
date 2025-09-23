@@ -43,13 +43,6 @@ const ClientsPage = () => {
     }
   ];
 
-  const stats = [
-    { number: "500+", label: "Happy Clients" },
-    { number: "1000+", label: "Properties Sold" },
-    { number: "$2.5B+", label: "Total Value Transacted" },
-    { number: "15+", label: "Years Experience" }
-  ];
-
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -72,11 +65,11 @@ const ClientsPage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-              Our Clients
+              OUR JOURNEY CONTINUES
             </h1>
             <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
-              Trusted by industry leaders and growing businesses alike. Discover why hundreds of clients 
-              choose us for their property needs.
+              Growing Together
+Every success story fuels our passion. From our first client to our latest achievement, discover how we're building lasting relationships in luxury real estate.
             </p>
           </div>
         </div>

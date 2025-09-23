@@ -63,7 +63,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="border-t border-gray-700 pt-8 text-center">
-                <p className="text-gray-400">© 2025 Sand N Sea Realty. All rights reserved.</p>
+                <p className="text-gray-400">© 2025 Sand N Sea Realty. All rights reserved. Built by <a href="https://bowlpulp.com" className="text-[#d2ab67] hover:underline">BowlPulp.</a></p>
               </div>
             </div>
           </footer>
