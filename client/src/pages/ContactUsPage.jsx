@@ -38,8 +38,8 @@ const ContactUsPage = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      details: "+91 98330 33233",
-      subtitle: "Mon-Fri 9AM-7PM, Sat 10AM-5PM"
+      details: "+91 98202 33133",
+      subtitle: "24/7 Available"
     },
     {
       icon: <Mail className="w-6 h-6" />,
@@ -47,12 +47,6 @@ const ContactUsPage = () => {
       details: "support@sandnsearealty.com",
       subtitle: "We'll respond within 24 hours"
     },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Business Hours",
-      details: "Monday - Saturday",
-      subtitle: "9:00 AM - 7:00 PM"
-    }
   ];
 
   return (
@@ -152,7 +146,7 @@ const ContactUsPage = () => {
                 
                 <div className="relative">
                   <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Message *
+                    How can we help you? *
                   </label>
                   <textarea
                     id="message"

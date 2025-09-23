@@ -39,24 +39,42 @@ const HomePage = () => {
   // Testimonials data
   const testimonials = [
     {
-      name: 'Michael Thompson',
-      role: 'Luxury Home Buyer',
-      text: 'Sand N Sea Realty exceeded every expectation. Their attention to detail and market knowledge is unparalleled.',
-      rating: 5,
+      name: "Virag Mishra",
+      company: "Singer",
+      role: "Self",
+      text: "Found my dream home with zero stress. You understood exactly what I needed—truly grateful!",
+      rating: 5
     },
     {
-      name: 'Sarah Williams',
-      role: 'Oceanfront Property Seller',
-      text: 'Professional, responsive, and results-driven. They sold our beachfront property above asking price in just 3 weeks.',
-      rating: 5,
+      name: "Devesh Mathur",
+      company: "HSBC Bangladesh",
+      role: "COO",
+      text: "Professional, reliable, and efficient. The whole process was handled with excellence.",
+      rating: 5
     },
     {
-      name: 'David Chen',
-      role: 'Investment Client',
-      text: 'Their expertise in luxury coastal properties helped us build an incredible investment portfolio.',
-      rating: 5,
+      name: "Akhil Kedia",
+      company: "JP Morgan",
+      role: "Executive Director",
+      text: "Great experience—your insights and approach made everything quick and smooth.",
+      rating: 5
     },
+    {
+      name: "Dr. Roopesh Pandey",
+      company: "Jaslok Hospital",
+      role: "Cardiologist",
+      text: "Appreciated the hassle-free process. You made it easy despite my busy schedule.",
+      rating: 5
+    },
+    {
+      name: "Sujata Kunder",
+      company: "Custom Officer",
+      role: "-",
+      text: "Loved the personal attention and honesty. Found exactly what I was looking for!",
+      rating: 5
+    }
   ];
+
 
   // Hero image carousel
   useEffect(() => {
@@ -207,7 +225,7 @@ const HomePage = () => {
 {/* Featured Properties */}
           <BrandMarquee/>
 
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
@@ -302,7 +320,7 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Dynamic Counter Section */}
       {/* <section className="py-20 bg-slate-800 text-white">
