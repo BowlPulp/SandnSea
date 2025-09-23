@@ -1,4 +1,4 @@
-import {Home, Users, Award, Phone, Mail, MapPin, Star, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import {Home, Users, Award, Phone, Mail, MapPin, Star, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
 import React from 'react'
 import {Link} from 'react-router-dom';
 const Footer = () => {
@@ -25,6 +25,12 @@ const Footer = () => {
                     <a href="https://www.linkedin.com/company/sand-sea-realty-venturellp/?originalSubdomain=in" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
                       <Linkedin className="w-5 h-5" />
                     </a>
+                    <a href="https://www.linkedin.com/company/sand-sea-realty-venturellp/?originalSubdomain=in" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
+                      <Youtube className="w-5 h-5" />
+                    </a>
+                    <a href="https://www.linkedin.com/company/sand-sea-realty-venturellp/?originalSubdomain=in" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
+                      <Twitter className="w-5 h-5" />
+                    </a>
                   </div>
                 </div>
                 <div>
@@ -34,6 +40,7 @@ const Footer = () => {
                     <li><Link to="/properties" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Properties</Link></li>
                     <li><Link to="/clients" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Our Clients</Link></li>
                     <li><Link to="/contact" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Contact Us</Link></li>
+                      <li><Link to="/tos" className="text-gray-300 hover:text-[#d2ab67] transition-colors">Terms & Service</Link></li>
                   </ul>
                 </div>
                 <div>
@@ -41,7 +48,8 @@ const Footer = () => {
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
                       <Phone className="w-5 h-5 text-[#d2ab67]" />
-                      <span className="text-gray-300">9833033233</span>
+                      <span className="text-gray-300">9820233133 
+</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Mail className="w-5 h-5 text-[#d2ab67]" />

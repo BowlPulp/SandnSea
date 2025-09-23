@@ -208,14 +208,16 @@ const ContactUsPage = () => {
                 <h3 className="text-xl font-bold mb-4">Prefer to Call or Chat?</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <a 
-                    href="tel:+919833033233" 
+                    href="tel:+919820233133 
+" 
                     className="bg-[#d2ab67] text-white py-3 px-6 rounded-xl font-semibold hover:bg-amber-700 transition-colors flex items-center justify-center gap-2"
                   >
                     <Phone className="w-5 h-5" />
                     Call Now
                   </a>
                   <a 
-                    href="https://wa.me/919833033233" 
+                    href="https://wa.me/919820233133 
+" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-green-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
@@ -236,7 +238,8 @@ const ContactUsPage = () => {
       {/* WhatsApp Floating Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <a
-          href="https://wa.me/919833033233"
+          href="https://wa.me/919820233133 
+"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center group"

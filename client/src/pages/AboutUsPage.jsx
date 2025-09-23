@@ -337,11 +337,11 @@ const AboutUsPage = () => {
               <div className="text-center mb-6">
                 <img 
                   src="Founder.jpeg" 
-                  alt="Danesh Singh - Founder & CEO"
+                  alt="Danesh Singh - Founder"
                   className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
                 <div className="bg-[#d2ab67] text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
-                  Founder & CEO
+                  Founder
                 </div>
               </div>
 
@@ -386,11 +386,11 @@ const AboutUsPage = () => {
               <div className="text-center mb-6">
                 <img 
                   src="CoFounder.png" 
-                  alt="Sapna V Singh - Founder"
+                  alt="Sapna V Singh - Partner"
                   className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
                 <div className="bg-[#d2ab67] text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
-                  Founder
+                  Partner
                 </div>
               </div>
 
@@ -398,7 +398,7 @@ const AboutUsPage = () => {
                 <h3 className="text-3xl font-bold text-slate-800 mb-3" style={{fontFamily: 'Playfair Display, serif'}}>
                   Sapna V Singh
                 </h3>
-                <div className="text-[#d2ab67] font-semibold text-base mb-4 italic">
+               <div className="text-[#d2ab67] font-semibold text-base mb-4 italic">
                   "Creativity and strategic vision drive transformative success."
                 </div>
               </div>
@@ -435,11 +435,11 @@ const AboutUsPage = () => {
               <div className="text-center mb-6">
                 <img 
                   src="Director.jpg" 
-                  alt="Subhashchandra Singh - Director"
+                  alt="Subhashchandra Singh - Partner"
                   className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg mb-4"
                 />
-                <div className="bg-slate-800 text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
-                  Director
+                <div className="bg-[#d2ab67] text-white px-4 py-1 rounded-lg text-sm font-semibold inline-block">
+                  Partner
                 </div>
               </div>
 
@@ -447,7 +447,7 @@ const AboutUsPage = () => {
                 <h3 className="text-3xl font-bold text-slate-800 mb-3" style={{fontFamily: 'Playfair Display, serif'}}>
                   Subhashchandra Singh
                 </h3>
-                <div className="text-slate-800 font-semibold text-base mb-4 italic">
+               <div className="text-[#d2ab67] font-semibold text-base mb-4 italic">
                   "Success is born from dharma—acting with integrity and purpose."
                 </div>
               </div>
@@ -468,7 +468,7 @@ const AboutUsPage = () => {
                   driving strategic growth and business excellence.
                 </p>
                 
-                <p className="font-medium text-slate-800 border-l-3 border-slate-800 pl-3 italic text-sm">
+               <p className="font-medium text-slate-800 border-l-3 border-[#d2ab67] pl-3 italic text-sm">
                   "In this exciting post-retirement chapter, my mission is mentoring dynamic professionals—sharing 
                   key insights, foundational principles, and hands-on expertise. With deep industry knowledge 
                   and strategic vision, I'm committed to guiding our firm toward unprecedented success."
