@@ -24,7 +24,7 @@ const PropertiesPage = () => {
           bedrooms: '3+',
           bathrooms: '4+',
           rating: 4.9,
-          featured: true
+          featured: false
         },
         {
           id: 18,
@@ -35,7 +35,7 @@ const PropertiesPage = () => {
           bedrooms: '2+',
           bathrooms: '3+',
           rating: 4.9,
-          featured: true
+          featured: false
         },
         {
           id: 19,
@@ -57,7 +57,7 @@ const PropertiesPage = () => {
           bedrooms: '3+',
           bathrooms: '4+',
           rating: 5.0,
-          featured: true
+          featured: false
         },
         {
           id: 21,
@@ -81,7 +81,7 @@ const PropertiesPage = () => {
           bedrooms: '2+',
           bathrooms: '2+',
           rating: 4.5,
-          featured: true
+          featured: false
         },
         {
           id: 22,
@@ -92,7 +92,7 @@ const PropertiesPage = () => {
           bedrooms: '2+',
           bathrooms: '3+',
           rating: 4.8,
-          featured: true
+          featured: false
         },
         {
           id: 23,
@@ -125,7 +125,7 @@ const PropertiesPage = () => {
           bedrooms: '3+',
           bathrooms: '4+',
           rating: 4.9,
-          featured: true
+          featured: false
         },
         {
           id: 26,
@@ -150,7 +150,7 @@ const PropertiesPage = () => {
           bedrooms: '3+',
           bathrooms: '4+',
           rating: 5.0,
-          featured: true
+          featured: false
         },
         {
           id: 3,
@@ -172,7 +172,7 @@ const PropertiesPage = () => {
           bedrooms: '3+',
           bathrooms: '4+',
           rating: 4.8,
-          featured: true
+          featured: false
         },
         {
           id: 31,
@@ -183,7 +183,7 @@ const PropertiesPage = () => {
           bedrooms: '4+',
           bathrooms: '5+',
           rating: 4.9,
-          featured: true
+          featured: false
         },
         {
           id: 32,
@@ -210,7 +210,7 @@ const PropertiesPage = () => {
           bedrooms: '2+',
           bathrooms: '2+',
           rating: 4.6,
-          featured: true
+          featured: false
         },
       ],
       Pune: [
@@ -223,7 +223,7 @@ const PropertiesPage = () => {
           bedrooms: '3+',
           bathrooms: '4+',
           rating: 4.9,
-          featured: true
+          featured: false
         },
       ],
       'Bangalore': [
@@ -236,7 +236,7 @@ const PropertiesPage = () => {
           bedrooms: '2+',
           bathrooms: '3+',
           rating: 4.6,
-          featured: true
+          featured: false
         }
       ]
     }

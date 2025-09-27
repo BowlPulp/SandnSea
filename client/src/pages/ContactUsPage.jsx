@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Clock, MessageCircle, Send, User, AtSign, Hash } from 'lucide-react';
+import { Phone, Mail, MessageCircle, Send, User, AtSign, Hash } from 'lucide-react';
+
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxsj8G7CGuJWymk_95vOQDw53FxfLLmp_seYmk5YDQYPBBSwEBM0xqmwtdkAi7KcGAujw/exec";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +11,7 @@ const ContactUsPage = () => {
     phone: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -23,15 +26,29 @@ const ContactUsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setShowSuccess(true);
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    
-    setTimeout(() => setShowSuccess(false), 5000);
+
+    try {
+      const fd = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        fd.append(key, value);
+      });
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: fd,
+        mode: "no-cors", // required for Google Sheets
+      });
+
+      setIsSubmitting(false);
+      setShowSuccess(true);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+
+      setTimeout(() => setShowSuccess(false), 4000);
+    } catch (error) {
+      console.error("Form submission failed:", error);
+      setIsSubmitting(false);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const contactInfo = [
@@ -79,11 +96,13 @@ const ContactUsPage = () => {
 
               {showSuccess && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
-                  <p className="text-green-800 font-semibold">Thank you for your inquiry! We'll be in touch soon.</p>
+                  <p className="text-green-800 font-semibold">
+                    ✅ Thank you for your inquiry! We'll be in touch soon.
+                  </p>
                 </div>
               )}
 
-              <div className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="relative">
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -93,12 +112,12 @@ const ContactUsPage = () => {
                       <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
                         onChange={handleInputChange}
                         required
-                        className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                        className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500"
                         placeholder="John Doe"
                       />
                     </div>
@@ -112,11 +131,11 @@ const ContactUsPage = () => {
                       <input
                         type="tel"
                         id="phone"
-                        name="phone"
-                        value={formData.phone}
+                        name="phoneNumber"
+                        value={formData.phoneNumber}
                         onChange={handleInputChange}
                         required
-                        className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                        className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500"
                         placeholder="+91 98765 43210"
                       />
                     </div>
@@ -136,7 +155,7 @@ const ContactUsPage = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -153,15 +172,15 @@ const ContactUsPage = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all resize-none"
-                    placeholder="Tell us about your dream property, budget range, preferred locations, or any specific requirements..."
+                    className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 resize-none"
+                    placeholder="Tell us about your dream property, budget, or requirements..."
                   />
                 </div>
                 
                 <button
-                  onClick={handleSubmit}
+                  type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#d2ab67] text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-amber-700 transition-all transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-[#d2ab67] text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-amber-700 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
                 >
                   {isSubmitting ? (
                     <>
@@ -175,22 +194,20 @@ const ContactUsPage = () => {
                     </>
                   )}
                 </button>
-              </div>
+              </form>
             </div>
 
             {/* Contact Information */}
             <div className="space-y-8">
-              
-              {/* Contact Cards */}
+              {/* Cards */}
               <div className="grid gap-6">
                 {contactInfo.map((info, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                  <div key={index} className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition">
                     <div className="bg-amber-100 w-12 h-12 rounded-full flex items-center justify-center text-[#d2ab67] mb-4">
                       {info.icon}
                     </div>
                     <h3 className="text-lg font-bold text-slate-800 mb-2">{info.title}</h3>
                     <p className="text-slate-700 font-semibold">{info.details}</p>
-                    <p className="text-gray-500 text-sm mt-1">{info.subtitle}</p>
                   </div>
                 ))}
               </div>
@@ -200,19 +217,17 @@ const ContactUsPage = () => {
                 <h3 className="text-xl font-bold mb-4">Prefer to Call or Chat?</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <a 
-                    href="tel:+919820233133 
-" 
-                    className="bg-[#d2ab67] text-white py-3 px-6 rounded-xl font-semibold hover:bg-amber-700 transition-colors flex items-center justify-center gap-2"
+                    href="tel:+919820233133" 
+                    className="bg-[#d2ab67] text-white py-3 px-6 rounded-xl font-semibold hover:bg-amber-700 flex items-center justify-center gap-2"
                   >
                     <Phone className="w-5 h-5" />
                     Call Now
                   </a>
                   <a 
-                    href="https://wa.me/919820233133 
-" 
+                    href="https://wa.me/919820233133" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="bg-green-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                    className="bg-green-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-green-700 flex items-center justify-center gap-2"
                   >
                     <MessageCircle className="w-5 h-5" />
                     WhatsApp
@@ -222,22 +237,7 @@ const ContactUsPage = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* WhatsApp Floating Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <a
-          href="https://wa.me/919820233133"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center group"
-        >
-          <MessageCircle className="w-6 h-6" />
-          <span className="absolute right-full mr-3 bg-slate-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-            Chat with us on WhatsApp
-          </span>
-        </a>
-      </div>
+      </div>      
     </div>
   );
 };

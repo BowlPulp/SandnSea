@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { X, Bell, Send, User, Mail, MapPin, MessageSquare } from "lucide-react";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwraxZgZD0tbMg7b5_Owba6i2prHU7hHdYRaAfQqkJe0pa6kZc1tqqqgwadwtCP8CPmyQ/exec";
+  "https://script.google.com/macros/s/AKfycbxsj8G7CGuJWymk_95vOQDw53FxfLLmp_seYmk5YDQYPBBSwEBM0xqmwtdkAi7KcGAujw/exec";
 
 const PropertyPrompt = ({
   autoShow = true,
@@ -16,7 +16,7 @@ const PropertyPrompt = ({
   const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
-    lastName: "",
+    phoneNumber: "",
     email: "",
     address: "",
     message: "",
@@ -79,7 +79,7 @@ const PropertyPrompt = ({
 
       setIsSubmitting(false);
       setShowSuccess(true);
-      setFormData({ firstName: "", lastName: "", email: "", address: "", message: "" });
+      setFormData({ firstName: "", phoneNumber: "", email: "", address: "", message: "" });
 
       setTimeout(() => {
         handleClose();
@@ -161,10 +161,10 @@ const PropertyPrompt = ({
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <input
                     type="text"
-                    name="lastName"
-                    value={formData.lastName}
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
                     onChange={handleInputChange}
-                    placeholder="Last Name"
+                    placeholder="Phone Number"
                     className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d2ab67] text-sm"
                   />
                 </div>
