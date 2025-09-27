@@ -2,14 +2,9 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Bell, Send, User, Mail, MapPin, MessageSquare } from "lucide-react";
 
-/**
- * Props:
- *  - autoShow (bool) default true → show automatically after delay
- *  - delay (ms) default 3000 → auto-show delay
- *  - storageKey (string) default 'propertyPromptDismissed'
- *  - open (bool) → controlled open/close from parent
- *  - onClose (fn) → called when modal closes
- */
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwraxZgZD0tbMg7b5_Owba6i2prHU7hHdYRaAfQqkJe0pa6kZc1tqqqgwadwtCP8CPmyQ/exec";
+
 const PropertyPrompt = ({
   autoShow = true,
   delay = 3000,
@@ -20,7 +15,8 @@ const PropertyPrompt = ({
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     address: "",
     message: "",
@@ -28,17 +24,14 @@ const PropertyPrompt = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // ensure client-side rendering (for portals + localStorage)
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // sync with parent `open` prop
   useEffect(() => {
     if (open) setIsVisible(true);
   }, [open]);
 
-  // auto-show once per day
   useEffect(() => {
     if (!mounted || !autoShow) return;
 
@@ -48,7 +41,7 @@ const PropertyPrompt = ({
         const today = new Date().toDateString();
         if (dismissed !== today) setIsVisible(true);
       } catch (err) {
-        setIsVisible(true); // fallback
+        setIsVisible(true);
       }
     }, delay);
 
@@ -71,12 +64,31 @@ const PropertyPrompt = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1500));
-    setIsSubmitting(false);
-    setShowSuccess(true);
-    setTimeout(() => {
-      handleClose();
-    }, 1800);
+
+    try {
+      const fd = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        fd.append(key, value);
+      });
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: fd,
+        mode: "no-cors", // required for Google Sheets
+      });
+
+      setIsSubmitting(false);
+      setShowSuccess(true);
+      setFormData({ firstName: "", lastName: "", email: "", address: "", message: "" });
+
+      setTimeout(() => {
+        handleClose();
+      }, 1800);
+    } catch (error) {
+      console.error("Form submission failed:", error);
+      setIsSubmitting(false);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   if (!mounted || !isVisible) return null;
@@ -127,16 +139,32 @@ const PropertyPrompt = ({
                 developments.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form
+                onSubmit={handleSubmit}
+                name="submit-to-google-sheet"
+                className="space-y-4"
+              >
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    placeholder="Your Name"
+                    placeholder="First Name"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d2ab67] text-sm"
+                  />
+                </div>
+
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="Last Name"
                     className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d2ab67] text-sm"
                   />
                 </div>
@@ -149,7 +177,7 @@ const PropertyPrompt = ({
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    placeholder="Your Email"
+                    placeholder="Email"
                     className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d2ab67] text-sm"
                   />
                 </div>

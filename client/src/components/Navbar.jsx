@@ -9,7 +9,6 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/aboutus' },
     { name: 'Properties', href: '/properties' },
-    { name: 'Our Clients', href: '/clients' },
      { name: 'Contact Us', href: '/contact' }
   ];
 

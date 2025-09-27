@@ -39,13 +39,11 @@ const ContactUsPage = () => {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
       details: "+91 98202 33133",
-      subtitle: "24/7 Available"
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
       details: "support@sandnsearealty.com",
-      subtitle: "We'll respond within 24 hours"
     },
   ];
 
@@ -220,9 +218,6 @@ const ContactUsPage = () => {
                     WhatsApp
                   </a>
                 </div>
-                <p className="text-gray-300 text-sm mt-4 text-center">
-                  Available Monday-Saturday for your convenience
-                </p>
               </div>
             </div>
           </div>
@@ -232,8 +227,7 @@ const ContactUsPage = () => {
       {/* WhatsApp Floating Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <a
-          href="https://wa.me/919820233133 
-"
+          href="https://wa.me/919820233133"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center group"

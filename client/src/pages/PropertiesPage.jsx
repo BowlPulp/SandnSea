@@ -17,23 +17,138 @@ const PropertiesPage = () => {
       Western: [
         {
           id: 1,
+          image: 'aboutusproperties/LodhaAltus.jpg',
+          location: 'Lodha Altus - Borivali West',
+          size: '3,4 BHK',
+          price: '₹4.0 CR',
+          bedrooms: '3+',
+          bathrooms: '4+',
+          rating: 4.9,
+          featured: true
+        },
+        {
+          id: 18,
+          image: 'aboutusproperties/GodrejReserve.webp',
+          location: 'Godrej Reserve - Kandivali East',
+          size: '2,3,4 BHK',
+          price: '₹4.0 CR',
+          bedrooms: '2+',
+          bathrooms: '3+',
+          rating: 4.9,
+          featured: true
+        },
+        {
+          id: 19,
+          image: 'properties/adani.jpeg',
+          location: 'Adani Linkbay Residences - Western Suburbs',
+          size: '2,3,4 BHK',
+          price: '₹3.5 CR',
+          bedrooms: '2+',
+          bathrooms: '3+',
+          rating: 4.7,
+          featured: false
+        },
+        {
+          id: 20,
+          image: 'aboutusproperties/LodhaAcenza.jpg',
+          location: 'Lodha Ascenza - Wadala',
+          size: '3,4 BHK',
+          price: '₹8.0 CR',
+          bedrooms: '3+',
+          bathrooms: '4+',
+          rating: 5.0,
+          featured: true
+        },
+        {
+          id: 21,
+          image: 'properties/godrejskyshore.jpg',
+          location: 'Godrej Skyshore - Western Suburbs',
+          size: '2,3,4 BHK',
+          price: '₹4.5 CR',
+          bedrooms: '2+',
+          bathrooms: '3+',
+          rating: 4.8,
+          featured: false
+        }
+      ],
+      Central: [
+        {
+          id: 1,
           image: 'aboutusproperties/runwalavenue.jpg',
           location: 'Runwal Avenue - Kanjurmang WEST',
           size: '1,2,3 BHK',
-          price: '₹14,000,000',
+          price: '₹1.4 CR',
           bedrooms: '2+',
           bathrooms: '2+',
           rating: 4.5,
           featured: true
         },
         {
-          id: 2,
-          image: 'aboutusproperties/LodhaDivino.jpg',
-          location: 'Lodha Divino - Bandra West',
-          size: '3,4 BHK',
-          price: '₹67,000,000',
-          bedrooms: '3+',
+          id: 22,
+          image: 'properties/Prestige.png',
+          location: 'Prestige City - Central Suburbs',
+          size: '2,3,4 BHK',
+          price: '₹3.8 CR',
+          bedrooms: '2+',
           bathrooms: '3+',
+          rating: 4.8,
+          featured: true
+        },
+        {
+          id: 23,
+          image: 'properties/Piramal.png',
+          location: 'Piramal Revanta - Central Suburbs',
+          size: '2,3,4 BHK',
+          price: '₹4.2 CR',
+          bedrooms: '2+',
+          bathrooms: '3+',
+          rating: 4.7,
+          featured: false
+        },
+        {
+          id: 24,
+          image: 'properties/Neelam.png',
+          location: 'Neelam Senroof - Central Suburbs',
+          size: '3,4 BHK',
+          price: '₹4.8 CR',
+          bedrooms: '3+',
+          bathrooms: '4+',
+          rating: 4.6,
+          featured: false
+        },
+        {
+          id: 25,
+          image: 'properties/Raheja.png',
+          location: 'Raheja Antares - Central Suburbs',
+          size: '3,4,5 BHK',
+          price: '₹5.5 CR',
+          bedrooms: '3+',
+          bathrooms: '4+',
+          rating: 4.9,
+          featured: true
+        },
+        {
+          id: 26,
+          image: 'properties/L&T.png',
+          location: 'Lnt Elixir - Central Suburbs',
+          size: '2,3,4 BHK',
+          price: '₹4.6 CR',
+          bedrooms: '2+',
+          bathrooms: '3+',
+          rating: 4.7,
+          featured: false
+        },
+      ],
+      'South Mumbai': [
+        // Renamed from 'Luxury Towers' to match your list
+        {
+          id: 28,
+          image: 'aboutusproperties/LodhaDivino.jpg',
+          location: 'Lodha Divino - South Mumbai',
+          size: '3,4 BHK',
+          price: '₹8.5 CR',
+          bedrooms: '3+',
+          bathrooms: '4+',
           rating: 5.0,
           featured: true
         },
@@ -42,170 +157,86 @@ const PropertiesPage = () => {
           image: 'aboutusproperties/DLH.webp',
           location: 'DLH Signature - Bandra West',
           size: '3,4 BHK',
-          price: '₹40,000,000',
+          price: '₹4.0 CR',
           bedrooms: '3+',
           bathrooms: '3+',
           rating: 4.9,
           featured: false
-        }
-      ],
-      Central: [
-        {
-          id: 4,
-          image: 'aboutusproperties/LodhaAcenza.jpg',
-          location: 'Lodha Ascenza - Wadala',
-          size: '3,4 BHK',
-          price: '₹80,000,000',
-          bedrooms: '3+',
-          bathrooms: '4+',
-          rating: 5.0,
-          featured: false
         },
         {
-          id: 5,
-          image: 'aboutusproperties/runwalavenue.jpg',
-          location: 'Central Park - Dadar',
-          size: '2,3 BHK',
-          price: '₹45,000,000',
-          bedrooms: '2+',
-          bathrooms: '2+',
-          rating: 4.7,
+          id: 30,
+          image: 'properties/LnTGateway.jpg',
+          location: 'Lnt Gateway - South Mumbai',
+          size: '3,4 BHK',
+          price: '₹9.2 CR',
+          bedrooms: '3+',
+          bathrooms: '4+',
+          rating: 4.8,
           featured: true
-        }
-      ],
-      'Luxury Towers': [
+        },
         {
-          id: 6,
-          image: 'aboutusproperties/LodhaDivino.jpg',
-          location: 'Trump Tower - Lower Parel',
+          id: 31,
+          image: 'properties/lntisland.jpg',
+          location: 'Island Clove Lnt - South Mumbai',
           size: '4,5 BHK',
-          price: '₹120,000,000',
+          price: '₹11.0 CR',
           bedrooms: '4+',
           bathrooms: '5+',
-          rating: 5.0,
+          rating: 4.9,
           featured: true
         },
         {
-          id: 7,
-          image: 'aboutusproperties/LodhaAltus.jpg',
-          location: 'One Avighna Park - Lower Parel',
+          id: 32,
+          image: 'properties/godrejhorizon.jpg',
+          location: 'Godrej Horizon - South Mumbai',
           size: '3,4,5 BHK',
-          price: '₹95,000,000',
+          price: '₹8.8 CR',
           bedrooms: '3+',
           bathrooms: '4+',
-          rating: 4.9,
-          featured: true
-        }
-      ],
-      Suburbs: [
-        {
-          id: 8,
-          image: 'aboutusproperties/GodrejReserve.webp',
-          location: 'Godrej Reserve - Kandivali East',
-          size: '2,3,4 BHK',
-          price: '₹40,000,000',
-          bedrooms: '2+',
-          bathrooms: '3+',
-          rating: 4.9,
-          featured: true
-        },
-        {
-          id: 9,
-          image: 'aboutusproperties/LodhaAltus.jpg',
-          location: 'Lodha Altus - Borivali West',
-          size: '3,4 BHK',
-          price: '₹40,000,000',
-          bedrooms: '3+',
-          bathrooms: '4+',
-          rating: 4.9,
-          featured: false
-        }
-      ]
-    },
-    Outside: {
-      Western: [
-        {
-          id: 10,
-          image: 'aboutusproperties/runwalavenue.jpg',
-          location: 'Oberoi Realty - Pune West',
-          size: '2,3,4 BHK',
-          price: '₹25,000,000',
-          bedrooms: '2+',
-          bathrooms: '2+',
-          rating: 4.6,
-          featured: true
-        },
-        {
-          id: 11,
-          image: 'aboutusproperties/LodhaDivino.jpg',
-          location: 'Godrej Golf Links - Greater Noida',
-          size: '3,4 BHK',
-          price: '₹35,000,000',
-          bedrooms: '3+',
-          bathrooms: '3+',
           rating: 4.8,
           featured: false
         }
       ],
-      Central: [
+      
+    },
+    Outside: {
+      Dubai: [
+        {
+          id: 10,
+          image: 'properties/dubai.jpg',
+          location: 'Oberoi Realty - Pune West',
+          size: '2,3,4 BHK',
+          price: '₹2.5 CR',
+          bedrooms: '2+',
+          bathrooms: '2+',
+          rating: 4.6,
+          featured: true
+        },
+      ],
+      Pune: [
         {
           id: 12,
-          image: 'aboutusproperties/LodhaAcenza.jpg',
+          image: 'properties/pune.jpg',
           location: 'DLF Privana - Gurgaon',
           size: '3,4,5 BHK',
-          price: '₹55,000,000',
+          price: '₹5.5 CR',
           bedrooms: '3+',
           bathrooms: '4+',
           rating: 4.9,
           featured: true
         },
-        {
-          id: 13,
-          image: 'aboutusproperties/GodrejReserve.webp',
-          location: 'Prestige Lakeside Habitat - Bangalore',
-          size: '2,3,4 BHK',
-          price: '₹30,000,000',
-          bedrooms: '2+',
-          bathrooms: '3+',
-          rating: 4.7,
-          featured: false
-        }
       ],
-      'Luxury Towers': [
+      'Bangalore': [
         {
-          id: 14,
-          image: 'aboutusproperties/LodhaAltus.jpg',
-          location: 'The Camellias - Gurgaon',
-          size: '4,5,6 BHK',
-          price: '₹85,000,000',
-          bedrooms: '4+',
-          bathrooms: '5+',
-          rating: 5.0,
-          featured: true
-        }
-      ],
-      Suburbs: [
-        {
-          id: 15,
-          image: 'aboutusproperties/DLH.webp',
-          location: 'Brigade Cornerstone Utopia - Bangalore',
-          size: '2,3 BHK',
-          price: '₹20,000,000',
-          bedrooms: '2+',
-          bathrooms: '2+',
-          rating: 4.5,
-          featured: false
-        },
-        {
-          id: 16,
-          image: 'aboutusproperties/runwalavenue.jpg',
-          location: 'Sobha City - Chennai',
+          id: 35,
+          image: 'properties/bangalore.jpg',
+          location: 'Garden City Heights - Pune',
           size: '2,3,4 BHK',
-          price: '₹28,000,000',
+          price: '₹2.2 CR',
           bedrooms: '2+',
           bathrooms: '3+',
           rating: 4.6,
-          featured: false
+          featured: true
         }
       ]
     }

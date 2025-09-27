@@ -121,12 +121,12 @@ const HomePage = () => {
             </Link>
 
             {/* Contact Button */}
-            <button
+            {/* <button
               onClick={() => setShowPrompt(true)}
               className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-slate-800"
             >
               Contact an Agent
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

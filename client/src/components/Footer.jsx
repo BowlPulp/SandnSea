@@ -25,10 +25,10 @@ const Footer = () => {
                     <a href="https://www.linkedin.com/company/sand-sea-realty-venturellp/?originalSubdomain=in" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
                       <Linkedin className="w-5 h-5" />
                     </a>
-                    <a href="https://www.linkedin.com/company/sand-sea-realty-venturellp/?originalSubdomain=in" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
+                    <a href="https://youtube.com/@sandnsearealty2924?si=CYjQpNL8naroJ184" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
                       <Youtube className="w-5 h-5" />
                     </a>
-                    <a href="https://www.linkedin.com/company/sand-sea-realty-venturellp/?originalSubdomain=in" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
+                    <a href="https://x.com/Sandnsea2924?t=Vdpvh_sDynxOk5mY4NCN5w&s=08" className="bg-[#d2ab67] p-3 rounded-full hover:bg-amber-700 transition-colors" target='blank'>
                       <Twitter className="w-5 h-5" />
                     </a>
                   </div>
